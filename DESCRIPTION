@@ -1,0 +1,12 @@
+Package: IS606
+Type: Package
+Title: IS606 Statistics and Probability for Data Analytics
+Version: 0.1
+Date: 2015-07-10
+Author: Jason Bryer
+Maintainer: Jason Bryer <jason@bryer.org>
+Description: Package to support CUNY IS 606 Statistics and Probability for Analytics course.
+License: Creative Commons
+LazyData: TRUE
+Suggests: R.rsp
+VignetteBuilder: R.rsp

@@ -1,0 +1,5 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+IS606.build.R
+.gitignore
+README.md
