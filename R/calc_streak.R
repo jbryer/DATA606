@@ -1,4 +1,7 @@
-calc_streak <- function(x){
+#' Calculate a streak.
+#'
+#' @export
+calc_streak <- function(x) {
   y <- rep(0,length(x))
   y[x == "H"] <- 1
   y <- c(0, y, 0)

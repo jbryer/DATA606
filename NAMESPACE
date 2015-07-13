@@ -2,7 +2,8 @@
 
 export(demo)
 export(getLabs)
-export(lab)
 export(shiny_demo)
+export(startLab)
+export(viewLab)
 import(openintro)
 import(shiny)

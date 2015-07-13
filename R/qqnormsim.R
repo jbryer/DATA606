@@ -1,3 +1,7 @@
+#'
+#'
+#' @author OpenIntro
+#' @export
 qqnormsim <- function(dat){
   par(mfrow = c(3,3))
   qqnorm(dat, main = "Normal QQ Plot (Data)")
@@ -8,6 +12,6 @@ qqnormsim <- function(dat){
     qqnorm(simnorm,main = "Normal QQ Plot (Sim)")
     qqline(simnorm)
   }
-  
+
   par(mfrow = c(1,1))
 }

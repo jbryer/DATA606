@@ -1,8 +1,10 @@
-# TODO: Fix plot labels
-
+#' Plot sum of squares.
+#'
+#' @author OpenIntro
+#' @export
 plot_ss <- function(x, y, showSquares = FALSE, leastSquares = FALSE){
   plot(y~x, asp = 1)# xlab = paste(substitute(x)), ylab = paste(substitute(y)))
-  
+
   if(leastSquares){
     m1 <- lm(y~x)
     y.hat <- m1$fit
