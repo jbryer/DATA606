@@ -9,9 +9,11 @@
 #' @import openintro
 NULL
 
-#' Function run when package is loaded.
+#' Function executed when the package is loaded.
+#'
 #' @param libname the library name.
 #' @param pkgname the package name (hopefully 'IS606').
+#' @name onAttach
 .onAttach <- function(libname, pkgname) {
 	cat("\nWelcome to CUNY IS606 Statistics and Probability for Data Analytics",
 		"\nThis package is designed to support this course. The text book used",

@@ -1,4 +1,4 @@
-#'
+#' Simulates QQ-plots with the given data.
 #'
 #' @author OpenIntro
 #' @export

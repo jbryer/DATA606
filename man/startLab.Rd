@@ -15,6 +15,9 @@ startLab(l, dest_dir = getwd(), file.prefix = paste0(Sys.info()["user"],
 \item{file.prefix}{the prefix to put before the Rmd file. This is typically
 your last name but be sure to check the assignment instructions.}
 }
+\value{
+the full path to the new Rmarkdown file for the lab.
+}
 \description{
 This will copy the lab and associated files to the `dest_dir` directory (the
 default is the current working directory), rename the Rmd file to include
