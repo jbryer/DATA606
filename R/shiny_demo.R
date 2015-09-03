@@ -45,9 +45,11 @@ shiny_demo <- function(topic,
 
 	if(missing(topic)) {
 		if(nrow(shiny.apps) > 0) {
-			message(shiny.apps, row.names=FALSE)
+			#message(shiny.apps, row.names=FALSE)
+			return(shiny.apps)
 		} else {
-			message('No Shiny apps found in loaded packages.')
+			warning('No Shiny apps found in loaded packages.')
+			invisible()
 		}
 	} else { #Run the shiny app
 		if(is.null(package)) { # find the package containing the topic
@@ -58,11 +60,13 @@ shiny_demo <- function(topic,
 				warning(paste0(topic, ' named app found in more than one package. ',
 							   'Running app from ', pkgs[pos[1]], ' package.'))
 			}
-			package <- pkgs[pos[1]]
+			package <- shiny.apps[pos[1],]$package
 		}
 		message(paste0('Running ', topic, ' app from the ', package, ' package'))
 		app.path <- file.path(path.package(package), 'shiny', topic)
-		runApp(app.path)
+		tryCatch({
+			shiny::runApp(app.path)
+		}, finally=print("App finished"))
 		invisible()
 	}
 }
