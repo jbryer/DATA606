@@ -2,8 +2,8 @@ require(shiny)
 require(shinyIncubator)
 require(ggplot2)
 
-theme_update(panel.background=element_blank(), 
-			 panel.grid.major=element_blank(), 
+theme_update(panel.background=element_blank(),
+			 panel.grid.major=element_blank(),
 			 panel.border=element_blank())
 
 tickets <- as.data.frame(rbind(
@@ -27,14 +27,14 @@ tickets$Odds <- as.integer(tickets$Odds)
 shinyServer(function(input, output) {
 	data <- NULL
 	#totals <- data.frame
-	
+
 	newrun <- reactive({
 		if(input$reload.data > 0 | TRUE) {
 			odds <- sample(max(tickets$Odds), input$games, replace=TRUE)
 			vals <- rep(-1, length(odds))
 			for(i in 1:nrow(tickets)) {
 				#Subtract the cost of the ticket
-				vals[odds %% tickets[i,'Odds'] == 0] <- tickets[i,'Value'] - 1 
+				vals[odds %% tickets[i,'Odds'] == 0] <- tickets[i,'Value'] - 1
 			}
 			df <- data.frame(Odds=odds, Value=vals, x=1:length(vals))
 			df$y <- cumsum(df$Value)
@@ -48,32 +48,32 @@ shinyServer(function(input, output) {
 			return(list(history=data, current=df))
 		}
 	})
-	
+
 	output$tickets <- renderTable({
 		tickets
 	})
-	
+
 	output$plot <- renderPlot({
 		mydata <- newrun()$current
 		history <- newrun()$history
-		range <- c(-max(abs(c(mydata$y, history$y))), 
+		range <- c(-max(abs(c(mydata$y, history$y))),
 					max(abs(c(mydata$y, history$y))))
-		p <- ggplot() + 
+		p <- ggplot() +
 			geom_line(data=history, aes(x=x, y=y, group=run), color='black', alpha=.2) +
-			geom_hline(yintercept=0, colour='blue') + 
-			geom_line(data=mydata, aes(x=x, y=y)) + 
-			geom_point(data=mydata[mydata$Value > 0,], 
+			geom_hline(yintercept=0, colour='blue') +
+			geom_line(data=mydata, aes(x=x, y=y)) +
+			geom_point(data=mydata[mydata$Value > 0,],
 					   aes(x=x,y=y,color=paste0('$', (Value+1))),
-					   size=2, vjust=-1) +
+					   size=2) +
 			scale_color_brewer('Winnning Value', labels=tickets$Winnings,
 							   breaks=tickets$Winnings, palette='Dark2') +
 			ylim(range) +
-			ylab('Cumulative Win/Loss in Dollars') + 
+			ylab('Cumulative Win/Loss in Dollars') +
 			xlab('Game Sequence')
 		print(p)
-		
+
 	}, height=400)
-	
+
 	output$results <- renderText({
 		mydata <- newrun()$current
 		total <- mean(mydata[mydata$x == max(mydata$x),'y'])
