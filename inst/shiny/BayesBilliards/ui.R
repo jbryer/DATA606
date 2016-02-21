@@ -7,13 +7,16 @@ shinyUI(navbarPage(title='Bayes Billiards Balls',
 			sidebarPanel(width=3,
 				sliderInput('confidence', 'Confidence Range:',
 							min=5, max=95, value=50),
-				sliderInput('samples', 'Number of samples:',
-							min=50, max=10000, value=init.samples),
 				checkboxInput('show8ball', 'Show Pool Table', value=FALSE),
 				radioButtons('plotType', 'Distribution Plot Type',
 							 c('Density', 'Histogram'), selected='Density'),
 				actionButton('nextIteration', 'Next Ball'),
-				actionButton('startOver', 'Start Over')
+				actionButton('startOver', 'Start Over'),
+				checkboxInput('setsamples', 'Adjust number of samples per iteration'),
+				conditionalPanel('input.setsamples == true',
+					sliderInput('samples', 'Number of samples:',
+								min=50, max=10000, value=init.samples)
+				)
 			),
 
 			mainPanel(width=9,
@@ -23,6 +26,7 @@ shinyUI(navbarPage(title='Bayes Billiards Balls',
 				),
 				fluidRow(
 					column(width=6,
+						   h4(textOutput('summary.text')), br(),
 						   h4('Summary Table'), tableOutput('summary')),
 					column(width=6,
 						   h4(textOutput('plot.title')), plotOutput('conf.plot'))
@@ -33,5 +37,5 @@ shinyUI(navbarPage(title='Bayes Billiards Balls',
 		)
 	),
 
-	tabPanel('About', includeMarkdown('about.md'))
+	tabPanel('About', htmlOutput('about'))
 ))

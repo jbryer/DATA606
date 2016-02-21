@@ -27,7 +27,6 @@ shinyServer(function(input, output) {
 		# Replicate the prior so the length is close to the number of desired
 		# samples. Better method would be to sample a new distribution with
 		# same center and spread of the last posterior.
-		#prior <- rep(prior, floor(input$samples / length(prior)))
 		prior <- sample(prior, input$samples, replace=TRUE)
 		posterior <- getPosterior(as.integer(newBall > billiards$ball), prior)
 		billiards$balls[nextPos] <- newBall
@@ -67,6 +66,11 @@ shinyServer(function(input, output) {
 		tab
 	})
 
+	output$summary.text <- renderText({
+		paste0('The ', ordinal(length(billiards$balls)), ' ball landed to the ',
+			   ifelse(billiards$balls[length(billiards$balls)] < billiards$ball,
+			   	   'left', 'right'), ' of the 8-ball')
+	})
 
 	output$summary <- renderTable({ table()	}, include.rownames=FALSE)
 
@@ -102,7 +106,8 @@ shinyServer(function(input, output) {
 		p <- ggplot(tab, aes(x=Mean, y=factor(Iteration))) +
 			geom_errorbarh(aes(xmin=Min, xmax=Max), color='darkgreen') +
 			geom_point(size=3) +
-			xlim(c(0,1)) + ylab('Iteration')
+			xlim(c(0,1)) + ylab('Iteration') +
+			theme(legend.position='none')
 		if(input$show8ball) {
 			p <- p + geom_vline(xintercept=billiards$ball)
 		}
@@ -124,7 +129,8 @@ shinyServer(function(input, output) {
 										   dist = rep('Posterior', length(billiards$posteriors[[i]])),
 										   prob = billiards$posteriors[[i]]))
 			}
-			df$Iteration <- factor(df$Iteration, levels=rev(unique(df$Iteration)))
+			df$Iteration <- factor(df$Iteration, levels=rev(unique(df$Iteration)),
+								   labels = paste0('Iteration ', rev(unique(df$Iteration))))
 			if(input$plotType == 'Density') {
 				p <- ggplot(df, aes(x=prob, group=dist, fill=dist)) +
 					geom_density() + xlim(c(0,1)) +
@@ -136,8 +142,14 @@ shinyServer(function(input, output) {
 					facet_wrap(~ Iteration + dist, ncol=2) +
 					xlab('Probability') + ylab('Count')
 			}
+			p <- p + theme(legend.position='none')
+			if(input$show8ball) {
+				p <- p + geom_vline(xintercept=billiards$ball)
+			}
 			return(p)
 		})
 		plotOutput('dist.plot', height=(length(billiards$balls) * 200))
 	})
+
+	output$about <- renderRmd('about.Rmd', input)
 })
