@@ -2,3 +2,5 @@ IS606.Rproj
 .Rproj.user
 .DS_Store
 .Rhistory
+inst/shiny/BayesBilliards/rsconnect
+inst/shiny/BayesBilliards/figure

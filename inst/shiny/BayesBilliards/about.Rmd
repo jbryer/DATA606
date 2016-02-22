@@ -1,9 +1,27 @@
 Author: Jason Bryer, Ph.D. (jason@bryer.org)  
 Website: [bryer.org](http://jason.bryer.org)
 
+### Running the App
+
+The app is deployed to RStudio's [shinyapps.io](https://jbryer.shinyapps.io/BayesBilliards/) service at [jbryer.shinyapps.io/BayesBilliards](https://jbryer.shinyapps.io/BayesBilliards).
+
+The Shiny App is included in the [`IS606`](https://github.com/jbryer/IS606) package on Github and can be run, once installed, using the `IS606::shiny_demo('BayesBilliards')` function.
+
+Or, run the app directly from Github using the `shiny::runGitHub('IS606', 'jbryer', subdir='inst/shiny/BayesBilliards')` function.
+
 ### Problem Statement
 
 Consider a pool table of length one. An 8-ball is thrown such that the likelihood of its stopping point is uniform across the entire table (i.e. the table is perfectly level). The location of the 8-ball is recorded, but not known to the observer. Subsequent balls are thrown one at a time and all that is reported is whether the ball stopped to the left or right of the 8-ball. Given only this information, what is the position of the 8-ball? How does the estimate change as more balls are thrown and recorded?
+
+### Usage
+
+* **Confidence Range** - The width of the confidence interval around the mean.
+* **Show Pool Table** - Show a figure with the 8-ball along with the location of subsequent ball throws.
+* **Distribution Plot Type** - For the proir and posterior distribution plots use density or histogram plot types.
+* **Next Ball** - Throw another ball and record whether it fell to the left or right of the 8-ball.
+* **Start Over** - Throw a new 8-ball and start the process over.
+* **Adjust number of samples per iteration** - This will provide a slider input to adjust the number of the simulated random samples for each iteration.
+* **Number of Samples** - The length of the prior distributions. For the first iteration, *k* random numbers are drawn from the uniform distribution. For subsequent iterations, *k* random numbers are drawn the posterior distribution of the previous iteration, with replacement so to have a prior of length *k* with the same shape for the current iteration.
 
 ### Strategy
 
@@ -46,18 +64,15 @@ mean(posterior)
 quantile(posterior, c(.25, .5))
 ```
 
-### Usage
-
-* **Confidence Range** - The width of the confidence interval around the mean.
-* **Show Pool Table** - Show a figure with the 8-ball along with the location of subsequent ball throws.
-* **Distribution Plot Type** - For the proir and posterior distribution plots use density or histogram plot types.
-* **Next Ball** - Throw another ball and record whether it fell to the left or right of the 8-ball.
-* **Start Over** - Throw a new 8-ball and start the process over.
-* **Adjust number of samples per iteration** - This will provide a slider input to adjust the number size of the simulated random samples for each iteration.
-* **Number of Samples** - The length of the prior distributions. For the first iteration, *k* random numbers are drawn from the uniform distribution. For subsequent iterations, *k* random numbers are drawn the posterior distribution of the previous iteration, with replacement so to have a prior of length *k* with the same shape.
 
 ### References
+
+Bayes, T. (1763), An essay towards solving a problem in the Doctrine of Chances. *Philosophical Transactions of the Royal Society of London, 53*. Retrieved from http://www.stat.ucla.edu/history/essay.pdf
 
 Downey, A. (2015). Bayesian Billiards. Retrieved from http://allendowney.blogspot.com/2015/06/bayesian-billiards.html
 
 Eddy, S.R. (2004). What is Bayesian statistics? *Nature Biotechnology 22*. Retrieved from http://www.nature.com/nbt/journal/v22/n9/full/nbt0904-1177.html
+
+McGrayne, S.B. (2011). *The Theory That Would Not Die: How Bayes' Rule Cracked the Enigma Code, Hunted Down Russian Submarines, and Emerged Triumphant from Two Centuries of Controversy.* Yale University Press.
+
+
