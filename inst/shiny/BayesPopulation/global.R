@@ -1,13 +1,10 @@
-library(shiny)
 library(ggplot2)
 library(grid)
 library(png)
-library(markdown)
-library(scales)
-
-init.samples <- 5000
 
 source('renderRmd.R')
+
+init.pond.size <- 250
 
 tufte.white <- '#fffff8'
 tufte.black <- '#111111'

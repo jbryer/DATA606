@@ -1,0 +1,105 @@
+Author: Jason Bryer, Ph.D. (jason@bryer.org)  
+Website: [bryer.org](http://jason.bryer.org)
+
+### Running the App
+
+The app is deployed to RStudio's [shinyapps.io](https://jbryer.shinyapps.io/BayesPopulation/) service at [jbryer.shinyapps.io/BayesPopulation](https://jbryer.shinyapps.io/BayesPopulation).
+
+The Shiny App is included in the [`IS606`](https://github.com/jbryer/IS606) package on Github and can be run, once installed, using the `IS606::shiny_demo('BayesPopulation')` function.
+
+Or, run the app directly from Github using the `shiny::runGitHub('IS606', 'jbryer', subdir='inst/shiny/BayesPopulation')` function.
+
+### Strategy
+
+```{r}
+source('circle.R')
+set.seed(2112)
+n.fish <- 250 # Actual number of fish
+n.sample <- 25 # Number of fish to sample
+
+fish <- rep(FALSE, n.fish)
+
+fish[sample(n.fish, n.sample)] <- TRUE
+recaught <- sum(fish[sample(n.fish, n.sample)])
+recaught
+
+euclidean.dist <- function(x1, y1, x2, y2) {
+	sqrt((x2 - x1)^2 + (y2 - y1)^2)
+}
+
+fish.df <- data.frame(caught=rep(FALSE, n.fish), x=runif(n.fish), y=runif(n.fish))
+fish.df$dist <- NA
+for(i in seq_len(nrow(fish.df))) {
+	fish.df[i,]$dist <- euclidean.dist(fish.df[i,]$x, fish.df[i,]$y, 0.5, 0.5)
+}
+fish.df[order(fish.df$dist)[1:n.sample],]$caught <- TRUE
+
+ggplot(fish.df, aes(x=x, y=y, color=as.character(caught))) + 
+	geom_polygon(data=circle(center=c(0.5,0.5), diameter=max(fish.df[fish.df$caught,]$dist)*2),
+			  color='black', fill='grey99') +
+	geom_point() +
+	scale_color_manual(values=c('TRUE'='red', 'FALSE'='grey90')) +
+	theme(axis.text=element_blank(), axis.title=element_blank(),
+		  axis.line=element_blank(), axis.ticks=element_blank(),
+		  legend.position='none',
+		  panel.background=element_rect(fill='blue', color='blue'),
+		  panel.grid=element_blank())
+
+fish.df$x2 <- runif(n.fish)
+fish.df$y2 <- runif(n.fish)
+fish.df$dist2 <- NA
+for(i in seq_len(nrow(fish.df))) {
+	fish.df[i,]$dist2 <- euclidean.dist(fish.df[i,]$x2, fish.df[i,]$y2, 0.5, 0.5)
+}
+fish.df$recaught <- FALSE
+fish.df[order(fish.df$dist2)[1:n.sample],]$recaught <- TRUE
+
+fish.df[fish.df$caught & fish.df$recaught,]
+
+img.fish <- rasterGrob(readPNG('fish.png'), interpolate=TRUE)
+img.fish <- readPNG('fish.png')
+
+ggplot(fish.df, aes(x=x2, y=y2, color=as.character(caught))) +
+	geom_polygon(data=circle(center=c(0.5,0.5), diameter=max(fish.df[fish.df$recaught,]$dist2)*2),
+			  	 aes(x=x, y=y), color='black', fill='grey99') +
+	geom_point() +
+# 	mapply(function(xx, yy) 
+#           annotation_raster(img.fish, xmin=xx-0.05, xmax=xx+0.05, ymin=yy-0.05, ymax=yy+0.05),
+#           fish.df$x2, fish.df$y2) +
+	scale_color_manual(values=c('TRUE'='red', 'FALSE'='grey90')) +
+	theme(axis.text=element_blank(), axis.title=element_blank(),
+		  axis.line=element_blank(), axis.ticks=element_blank(),
+		  legend.position='none',
+		  panel.background=element_rect(fill='blue', color='blue'),
+		  panel.grid=element_blank())
+
+```
+
+```{r}
+n.draw <- 100000 # Number of samples in our prior distribution
+min.pop <- 20 # Minimum number of fish we think there is
+max.pop <- 1000 # Maximum number of fish we think there is
+prior <- sample(seq(min.pop, max.pop), n.draw, replace = TRUE)
+
+hist(prior)
+
+posterior <- integer(n.draw)
+for(i in seq_len(n.draw)) {
+	fish.test <- rep(0:1, c(prior[i] - 20, 20))
+	posterior[i] <- sum(sample(fish.test, 20))
+}
+# We only keep those that match our original observation
+posterior <- prior[posterior == recaught]
+hist(posterior)
+
+```
+
+### References
+
+https://en.wikipedia.org/wiki/Abundance_estimation
+
+Bayes, T. (1763), An essay towards solving a problem in the Doctrine of Chances. *Philosophical Transactions of the Royal Society of London, 53*. Retrieved from http://www.stat.ucla.edu/history/essay.pdf
+
+McGrayne, S.B. (2011). *The Theory That Would Not Die: How Bayes' Rule Cracked the Enigma Code, Hunted Down Russian Submarines, and Emerged Triumphant from Two Centuries of Controversy.* Yale University Press.
+
+
