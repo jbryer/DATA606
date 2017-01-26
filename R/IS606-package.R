@@ -1,8 +1,8 @@
-#' IS606 Statistics and Probabilty for Data Analytics
+#' DATA606 Statistics and Probabilty for Data Analytics
 #'
-#' @name IS606-package
+#' @name DATA606-package
 #' @docType package
-#' @title R Package to support IS606 Statistics and Probabilty for Data Analytics.
+#' @title R Package to support DATA606 Statistics and Probabilty for Data Analytics.
 #' @author \email{jason@@bryer.org}
 #' @keywords package shiny
 #' @import shiny
@@ -15,7 +15,7 @@ NULL
 #' @param pkgname the package name (hopefully 'IS606').
 #' @name onAttach
 .onAttach <- function(libname, pkgname) {
-	cat("\nWelcome to CUNY IS606 Statistics and Probability for Data Analytics",
+	cat("\nWelcome to CUNY DATA606 Statistics and Probability for Data Analytics",
 		"\nThis package is designed to support this course. The text book used",
 		"\nis OpenIntro Statistics, 3rd Edition. You can read this by typing",
 		"\nvignette('os3') or visit www.OpenIntro.org.",
