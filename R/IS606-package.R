@@ -22,7 +22,7 @@ NULL
 		"\n",
 		"\nThe getLabs() function will return a list of the labs available.",
 		"\n",
-		"\nThe demo(package='IS606') will list the demos that are available.",
+		"\nThe demo(package='DATA606') will list the demos that are available.",
 		"\n")
 }
 
