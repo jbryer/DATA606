@@ -1,6 +1,6 @@
-Package: IS606
+Package: DATA606
 Type: Package
-Title: IS606 Statistics and Probability for Data Analytics
+Title: DATA606 Statistics and Probability for Data Analytics
 Version: 0.1
 Date: 2015-07-10
 Author: Jason Bryer
