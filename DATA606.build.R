@@ -15,16 +15,21 @@ build()
 ##### Testing ##################################################################
 library(IS606)
 
-vignette(package='IS606') # Documentation (including the book)
+vignette(package='DATA606') # Documentation (including the book)
 vignette('os3')
-demo(package='IS606')     # List the available demos (including shiny apps)
+demo(package='DATA606')     # List the available demos (including shiny apps)
 getLabs()                 # List the available labs
-data(package='IS606')     # List the available data
+data(package='DATA606')     # List the available data
 
 # Demos
 IS606::demo('CLT_mean')
 
 shiny_demo(package='IS606')
+
+shiny_demo('BayesBilliards')
+shiny_demo('lottery')
+shiny_demo('gambler')
+shiny_demo('DualScales')
 
 # View labs
 viewLab('Lab0')
