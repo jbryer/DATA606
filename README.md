@@ -1,9 +1,10 @@
-### IS 606 Statistics and Probabilty for Data Analytics
+### DATA606 Statistics and Probabilty for Data Analytics
 
 Author: Jason Bryer, Ph.D.
 
 Significant portions of this package are drawn from [OpenIntro Statistics](http://www.openintro.org).
 
+Course website: http://data606.net
 
 #### Course Description
 
@@ -15,6 +16,6 @@ See the [CUNY Website](http://sps.cuny.edu/programs/ms_dataanalytics) for detail
 
 ```
 install.packages(c('devtools','openintro'))
-devtools::install_github('jbryer/IS606')
+devtools::install_github('jbryer/DATA606')
 ```
 
