@@ -24,7 +24,7 @@ population looks like.
 In the previous lab, ``Sampling Distributions'', we looked at the population data
 of houses from Ames, Iowa. Let's start by loading that data set.
 
-```{r load-data, eval=FALSE}
+```{r load-data, eval=TRUE}
 load("more/ames.RData")
 ```
 
@@ -34,7 +34,7 @@ the data set has information on many housing variables, but for the first
 portion of the lab we'll focus on the size of the house, represented by the 
 variable `Gr.Liv.Area`.
 
-```{r sample, eval=FALSE}
+```{r sample, eval=TRUE}
 population <- ames$Gr.Liv.Area
 samp <- sample(population, 60)
 ```
@@ -52,7 +52,7 @@ One of the most common ways to describe the typical or central value of a
 distribution is to use the mean. In this case we can calculate the mean of the 
 sample using,
 
-```{r sample-mean, eval=FALSE}
+```{r sample-mean, eval=TRUE}
 sample_mean <- mean(samp)
 ```
 
@@ -68,7 +68,7 @@ We can calculate a 95% confidence interval for a sample mean by adding and
 subtracting 1.96 standard errors to the point estimate (See Section 4.2.3 if 
 you are unfamiliar with this formula).
 
-```{r ci, eval=FALSE}
+```{r ci, eval=TRUE}
 se <- sd(samp) / sqrt(60)
 lower <- sample_mean - 1.96 * se
 upper <- sample_mean + 1.96 * se
@@ -92,7 +92,7 @@ In this case we have the luxury of knowing the true population mean since we
 have data on the entire population. This value can be calculated using the 
 following command:
 
-```{r pop-mean, eval=FALSE}
+```{r pop-mean, eval=TRUE}
 mean(population)
 ```
 
@@ -123,7 +123,7 @@ But before we do all of this, we need to first create empty vectors where we
 can save the means and standard deviations that will be calculated from each 
 sample. And while we're at it, let's also store the desired sample size as `n`.
 
-```{r set-up, eval=FALSE}
+```{r set-up, eval=TRUE}
 samp_mean <- rep(NA, 50)
 samp_sd <- rep(NA, 50)
 n <- 60
@@ -131,7 +131,7 @@ n <- 60
 
 Now we're ready for the loop where we calculate the means and standard deviations of 50 random samples.
 
-```{r loop, eval=FALSE, tidy = FALSE}
+```{r loop, eval=TRUE, tidy = FALSE}
 for(i in 1:50){
   samp <- sample(population, n) # obtain a sample of size n = 60 from the population
   samp_mean[i] <- mean(samp)    # save sample mean in ith element of samp_mean
@@ -141,7 +141,7 @@ for(i in 1:50){
 
 Lastly, we construct the confidence intervals.
 
-```{r ci50, eval=FALSE}
+```{r ci50, eval=TRUE}
 lower_vector <- samp_mean - 1.96 * samp_sd / sqrt(n) 
 upper_vector <- samp_mean + 1.96 * samp_sd / sqrt(n)
 ```
@@ -149,7 +149,7 @@ upper_vector <- samp_mean + 1.96 * samp_sd / sqrt(n)
 Lower bounds of these 50 confidence intervals are stored in `lower_vector`, 
 and the upper bounds are in `upper_vector`. Let's view the first interval.
 
-```{r first-interval, eval=FALSE}
+```{r first-interval, eval=TRUE}
 c(lower_vector[1], upper_vector[1])
 ```
 
@@ -162,7 +162,7 @@ c(lower_vector[1], upper_vector[1])
     the true population mean? Is this proportion exactly equal to the 
     confidence level? If not, explain why.
 
-    ```{r plot-ci, eval=FALSE}
+    ```{r plot-ci, eval=TRUE}
     plot_ci(lower_vector, upper_vector, mean(population))
     ```
 

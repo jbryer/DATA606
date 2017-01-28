@@ -46,7 +46,7 @@ NBA finals earned him the title *Most Valuable Player* and many spectators
 commented on how he appeared to show a hot hand. Let's load some data from those
 games and look at the first several rows.
 
-```{r load-data, eval=FALSE}
+```{r load-data, eval=TRUE}
 load("more/kobe.RData")
 head(kobe)
 ```
@@ -68,7 +68,7 @@ his nine shot attempts in the first quarter:
 
 To verify this use the following command:
 
-```{r first9, eval=FALSE}
+```{r first9, eval=TRUE}
 kobe$basket[1:9]
 ```
 
@@ -83,7 +83,7 @@ The custom function `calc_streak`, which was loaded in with the data, may be
 used to calculate the lengths of all shooting streaks and then look at the 
 distribution.
 
-```{r calc-streak-kobe, eval=FALSE}
+```{r calc-streak-kobe, eval=TRUE}
 kobe_streak <- calc_streak(kobe$basket)
 barplot(table(kobe_streak))
 ```
@@ -145,7 +145,7 @@ ground rules of a random process and then the computer uses random numbers to
 generate an outcome that adheres to those rules. As a simple example, you can
 simulate flipping a fair coin with the following.
 
-```{r head-tail, eval=FALSE}
+```{r head-tail, eval=TRUE}
 outcomes <- c("heads", "tails")
 sample(outcomes, size = 1, replace = TRUE)
 ```
@@ -164,14 +164,14 @@ governs how many samples to draw (the `replace = TRUE` argument indicates we put
 the slip of paper back in the hat before drawing again). Save the resulting 
 vector of heads and tails in a new object called `sim_fair_coin`.
 
-```{r sim-fair-coin, eval=FALSE}
+```{r sim-fair-coin, eval=TRUE}
 sim_fair_coin <- sample(outcomes, size = 100, replace = TRUE)
 ```
 
 To view the results of this simulation, type the name of the object and then use
 `table` to count up the number of heads and tails.
 
-```{r table-sim-fair-coin, eval=FALSE}
+```{r table-sim-fair-coin, eval=TRUE}
 sim_fair_coin
 table(sim_fair_coin)
 ```
@@ -181,7 +181,7 @@ a coin and it lands heads is 0.5. Say we're trying to simulate an unfair coin
 that we know only lands heads 20% of the time. We can adjust for this by adding 
 an argument called `prob`, which provides a vector of two probability weights.
 
-```{r sim-unfair-coin, eval=FALSE}
+```{r sim-unfair-coin, eval=TRUE}
 sim_unfair_coin <- sample(outcomes, size = 100, replace = TRUE, prob = c(0.2, 0.8))
 ```
 
@@ -205,7 +205,7 @@ an equal probability of being drawn.
 If you want to learn more about `sample` or any other function, recall that you 
 can always check out its help file.
 
-```{r help-sample, eval=FALSE,tidy = FALSE}
+```{r help-sample, eval=TRUE,tidy = FALSE}
 ?sample
 ```
 
@@ -215,7 +215,7 @@ Simulating a basketball player who has independent shots uses the same mechanism
 that we use to simulate a coin flip. To simulate a single shot from an 
 independent shooter with a shooting percentage of 50% we type,
 
-```{r sim-basket, eval=FALSE}
+```{r sim-basket, eval=TRUE}
 outcomes <- c("H", "M")
 sim_basket <- sample(outcomes, size = 1, replace = TRUE)
 ```
@@ -237,7 +237,7 @@ With the results of the simulation saved as `sim_basket`, we have the data
 necessary to compare Kobe to our independent shooter. We can look at Kobe's data 
 alongside our simulated data.
 
-```{r compare-basket, eval=FALSE}
+```{r compare-basket, eval=TRUE}
 kobe$basket
 sim_basket
 ```

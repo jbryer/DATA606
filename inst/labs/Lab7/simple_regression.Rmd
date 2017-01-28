@@ -28,7 +28,7 @@ us best predict a team's runs scored in a season.
 
 Let's load up the data for the 2011 season.
 
-```{r load-data, eval=FALSE}
+```{r load-data, eval=TRUE}
 load("more/mlb11.RData")
 ```
 
@@ -48,7 +48,7 @@ work with the newer variables on your own.
 If the relationship looks linear, we can quantify the strength of the
 relationship with the correlation coefficient.
 
-```{r cor, eval=FALSE}
+```{r cor, eval=TRUE}
 cor(mlb11$runs, mlb11$at_bats)
 ```
 
@@ -69,7 +69,7 @@ line that best follows their association. Use the following interactive
 function to select the line that you think does the best job of going through 
 the cloud of points.
 
-```{r plotss-atbats-runs, eval=FALSE}
+```{r plotss-atbats-runs, eval=TRUE}
 plot_ss(x = mlb11$at_bats, y = mlb11$runs)
 ```
 
@@ -87,7 +87,7 @@ The most common way to do linear regression is to select the line that minimizes
 the sum of squared residuals. To visualize the squared residuals, you can rerun 
 the plot command and add the argument `showSquares = TRUE`.
 
-```{r plotss-atbats-runs-squares, eval=FALSE}
+```{r plotss-atbats-runs-squares, eval=TRUE}
 plot_ss(x = mlb11$at_bats, y = mlb11$runs, showSquares = TRUE)
 ```
 
@@ -105,7 +105,7 @@ line that minimizes the sum of squared residuals, through trial and error.
 Instead we can use the `lm` function in R to fit the linear model (a.k.a. 
 regression line).
 
-```{r m1, eval=FALSE}
+```{r m1, eval=TRUE}
 m1 <- lm(runs ~ at_bats, data = mlb11)
 ```
 
@@ -118,7 +118,7 @@ The output of `lm` is an object that contains all of the information we need
 about the linear model that was just fit. We can access this information using 
 the summary function.
 
-```{r summary-m1, eval=FALSE}
+```{r summary-m1, eval=TRUE}
 summary(m1)
 ```
 
@@ -148,7 +148,7 @@ explained by at-bats.
 
 Let's create a scatterplot with the least squares line laid on top.
 
-```{r reg-with-line, eval=FALSE}
+```{r reg-with-line, eval=TRUE}
 plot(mlb11$runs ~ mlb11$at_bats)
 abline(m1)
 ```
@@ -176,7 +176,7 @@ is linear using a scatterplot. We should also verify this condition with a plot
 of the residuals vs. at-bats. Recall that any code following a *#* is intended
 to be a comment that helps understand the code but is ignored by R.
 
-```{r residuals, eval=FALSE}
+```{r residuals, eval=TRUE}
 plot(m1$residuals ~ mlb11$at_bats)
 abline(h = 0, lty = 3)  # adds a horizontal dashed line at y = 0
 ```
@@ -186,13 +186,13 @@ abline(h = 0, lty = 3)  # adds a horizontal dashed line at y = 0
 
 *Nearly normal residuals*: To check this condition, we can look at a histogram
 
-```{r hist-res, eval=FALSE}
+```{r hist-res, eval=TRUE}
 hist(m1$residuals)
 ```
 
 or a normal probability plot of the residuals.
 
-```{r qq-res, eval=FALSE}
+```{r qq-res, eval=TRUE}
 qqnorm(m1$residuals)
 qqline(m1$residuals)  # adds diagonal line to the normal prob plot
 ```

@@ -36,7 +36,7 @@ data for *Data Analysis Using Regression and Multilevel/Hierarchical Models*
 (Gelman and Hill, 2007).) The result is a data frame where each row contains a 
 different course and columns represent variables about the courses and professors.
 
-```{r load-data, eval=FALSE}
+```{r load-data, eval=TRUE}
 load("more/evals.RData")
 ```
 

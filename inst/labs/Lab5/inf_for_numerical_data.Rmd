@@ -20,7 +20,7 @@ observations from this data set.
 
 Load the `nc` data set into our workspace.
 
-```{r load-data, eval=FALSE}
+```{r load-data, eval=TRUE}
 load("more/nc.RData")
 ```
 
@@ -48,7 +48,7 @@ variable         | description
 As a first step in the analysis, we should consider summaries of the data. This
 can be done using the `summary` command:
 
-```{r summary, eval=FALSE}
+```{r summary, eval=TRUE}
 summary(nc)
 ```
 
@@ -69,7 +69,7 @@ also compare the means of the distributions using the following function to
 split the `weight` variable into the `habit` groups, then take the mean of each
 using the `mean` function.
 
-```{r by-means, eval=FALSE}
+```{r by-means, eval=TRUE}
 by(nc$weight, nc$habit, mean)
 ```
 
@@ -90,7 +90,7 @@ smoking and non-smoking mothers are different.
 Next, we introduce a new function, `inference`, that we will use for conducting
 hypothesis tests and constructing confidence intervals. 
 
-```{r inf-weight-habit-ht, eval=FALSE, tidy=FALSE}
+```{r inf-weight-habit-ht, eval=TRUE, tidy=FALSE}
 inference(y = nc$weight, x = nc$habit, est = "mean", type = "ht", null = 0, 
           alternative = "twosided", method = "theoretical")
 ```
@@ -115,7 +115,7 @@ non-smoking mothers.
 By default the function reports an interval for ($\mu_{nonsmoker} - \mu_{smoker}$)
 . We can easily change this order by using the `order` argument:
 
-```{r inf-weight-habit-ci, eval=FALSE, tidy=FALSE}
+```{r inf-weight-habit-ci, eval=TRUE, tidy=FALSE}
 inference(y = nc$weight, x = nc$habit, est = "mean", type = "ci", null = 0, 
           alternative = "twosided", method = "theoretical", 
           order = c("smoker","nonsmoker"))

@@ -62,7 +62,7 @@ boys to newborn girls, so he gathered the baptism records for children born in
 London for every year from 1629 to 1710.  We can take a look at the data by 
 typing its name into the console.
 
-```{r view-data, eval=FALSE}
+```{r view-data, eval=TRUE}
 arbuthnot
 ```
 
@@ -112,7 +112,7 @@ by clicking on the *x* in the upper lefthand corner.
 Let's start to examine the data a little more closely. We can access the data in
 a single column of a data frame separately using a command like
 
-```{r view-boys, eval=FALSE}
+```{r view-boys, eval=TRUE}
 arbuthnot$boys
 ```
 
@@ -134,7 +134,7 @@ would represent the 43<sup>rd</sup> entry in the vector.
 R has some powerful functions for making graphics. We can create a simple plot 
 of the number of girls baptized per year with the command
 
-```{r plot-girls-vs-year, eval=FALSE}
+```{r plot-girls-vs-year, eval=TRUE}
 plot(x = arbuthnot$year, y = arbuthnot$girls)
 ```
 
@@ -146,7 +146,7 @@ plot function specifies the variable for the x-axis and the second for the y-axi
 If we wanted to connect the data points with lines, we could add a third argument,
 the letter `l` for **l**ine.
 
-```{r plot-girls-vs-year-line, eval=FALSE}
+```{r plot-girls-vs-year-line, eval=TRUE}
 plot(x = arbuthnot$year, y = arbuthnot$girls, type = "l")
 ```
 
@@ -156,7 +156,7 @@ read what a function does and learn the arguments that are available to you,
 just type in a question mark followed by the name of the function that you're 
 interested in. Try the following.
 
-```{r plot-help, eval=FALSE, tidy = FALSE}
+```{r plot-help, eval=TRUE, tidy = FALSE}
 ?plot
 ```
 
@@ -170,7 +170,7 @@ Now, suppose we want to plot the total number of baptisms.  To compute this, we
 could use the fact that R is really just a big calculator. We can type in 
 mathematical expressions like
 
-```{r calc-total-bapt-numbers, eval=FALSE}
+```{r calc-total-bapt-numbers, eval=TRUE}
 5218 + 4683
 ```
 
@@ -178,7 +178,7 @@ to see the total number of baptisms in 1629. We could repeat this once for each
 year, but there is a faster way. If we add the vector for baptisms for boys and
 girls, R will compute all sums simultaneously.
 
-```{r calc-total-bapt-vars, eval=FALSE}
+```{r calc-total-bapt-vars, eval=TRUE}
 arbuthnot$boys + arbuthnot$girls
 ```
 
@@ -187,7 +187,7 @@ looking at a data frame here), each one representing the sum we're after. Take a
 look at a few of them and verify that they are right. Therefore, we can make a 
 plot of the total number of baptisms per year with the command
 
-```{r plot-total-vs-year, eval=FALSE}
+```{r plot-total-vs-year, eval=TRUE}
 plot(arbuthnot$year, arbuthnot$boys + arbuthnot$girls, type = "l")
 ```
 
@@ -198,25 +198,25 @@ argument to be the x-variable and the second argument to be the y-variable.
 Similarly to how we computed the proportion of boys, we can compute the ratio of
 the number of boys to the number of girls baptized in 1629 with
 
-```{r calc-prop-boys-to-girls-numbers, eval=FALSE}
+```{r calc-prop-boys-to-girls-numbers, eval=TRUE}
 5218 / 4683
 ```
 
 or we can act on the complete vectors with the expression
 
-```{r calc-prop-boys-to-girls-vars, eval=FALSE}
+```{r calc-prop-boys-to-girls-vars, eval=TRUE}
 arbuthnot$boys / arbuthnot$girls
 ```
 
 The proportion of newborns that are boys
 
-```{r calc-prop-boys-numbers, eval=FALSE}
+```{r calc-prop-boys-numbers, eval=TRUE}
 5218 / (5218 + 4683)
 ```
 
 or this may also be computed for all years simultaneously:
 
-```{r calc-prop-boys-vars, eval=FALSE}
+```{r calc-prop-boys-vars, eval=TRUE}
 arbuthnot$boys / (arbuthnot$boys + arbuthnot$girls)
 ```
 
@@ -236,7 +236,7 @@ division, you can ask R to make comparisons like greater than, `>`, less than,
 `<`, and equality, `==`. For example, we can ask if boys outnumber girls in each 
 year with the expression
 
-```{r boys-more-than-girls, eval=FALSE}
+```{r boys-more-than-girls, eval=TRUE}
 arbuthnot$boys > arbuthnot$girls
 ```
 
@@ -266,7 +266,7 @@ analysis of Arbuthnot's baptism data. Your assignment involves repeating these
 steps, but for present day birth records in the United States.  Load up the 
 present day data with the following command.
 
-```{r load-present-data, eval=FALSE}
+```{r load-present-data, eval=TRUE}
 source("more/present.R")
 ```
 

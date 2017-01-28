@@ -22,7 +22,7 @@ in Ames between 2006 and 2010.  This collection represents our population of
 interest.  In this lab we would like to learn about these home sales by taking 
 smaller samples from the full population.  Let's load the data.
 
-```{r load-data, eval=FALSE}
+```{r load-data, eval=TRUE}
 load("more/ames.RData")
 ```
 
@@ -33,7 +33,7 @@ two of the variables: the above ground living area of the house in square feet
 throughout the lab, create two variables with short names that represent these 
 two variables.  
 
-```{r assign, eval=FALSE}
+```{r assign, eval=TRUE}
 area <- ames$Gr.Liv.Area
 price <- ames$SalePrice
 ```
@@ -41,7 +41,7 @@ price <- ames$SalePrice
 Let's look at the distribution of area in our population of home sales by 
 calculating a few summary statistics and making a histogram.
 
-```{r area, eval=FALSE}
+```{r area, eval=TRUE}
 summary(area)
 hist(area)
 ```
@@ -58,7 +58,7 @@ the population and use that to understand the properties of the population.
 If we were interested in estimating the mean living area in Ames based on a 
 sample, we can use the following command to survey the population.
 
-```{r samp1, eval=FALSE}
+```{r samp1, eval=TRUE}
 samp1 <- sample(area, 50)
 ```
 
@@ -74,7 +74,7 @@ home sales.
 If we're interested in estimating the average living area in homes in Ames 
 using the sample, our best single guess is the sample mean.
 
-```{r mean-samp1, eval=FALSE}
+```{r mean-samp1, eval=TRUE}
 mean(samp1)
 ```
 
@@ -98,7 +98,7 @@ can build up the sampling distribution for the sample mean by repeating the
 above steps many times. Here we will generate 5000 samples and compute the 
 sample mean of each.
 
-```{r loop, eval=FALSE}
+```{r loop, eval=TRUE}
 sample_means50 <- rep(NA, 5000)
 
 for(i in 1:5000){
@@ -112,7 +112,7 @@ hist(sample_means50)
 If you would like to adjust the bin width of your histogram to show a little 
 more detail, you can do so by changing the `breaks` argument.
 
-```{r hist-breaks, eval=FALSE}
+```{r hist-breaks, eval=TRUE}
 hist(sample_means50, breaks = 25)
 ```
 
@@ -136,7 +136,7 @@ inside the curly braces that take a random sample of size 50 from `area` then
 save the mean of that sample into the `sample_means50` vector.  Without the 
 `for` loop, this would be painful:
 
-```{r loop-long, eval=FALSE}
+```{r loop-long, eval=TRUE}
 sample_means50 <- rep(NA, 5000)
 
 samp <- sample(area, 50)
@@ -158,7 +158,7 @@ With the for loop, these thousands of lines of code are compressed into a
 handful of lines. We've added one extra line to the code below, which prints 
 the variable `i` during each iteration of the `for` loop. Run this code.
 
-```{r loop-again, eval=FALSE}
+```{r loop-again, eval=TRUE}
 sample_means50 <- rep(NA, 5000)
 
 for(i in 1:5000){
@@ -206,7 +206,7 @@ initialized at the outset.
 Mechanics aside, let's return to the reason we used a `for` loop: to compute a 
 sampling distribution, specifically, this one.
 
-```{r hist, eval=FALSE}
+```{r hist, eval=TRUE}
 hist(sample_means50)
 ```
 
@@ -220,7 +220,7 @@ To get a sense of the effect that sample size has on our distribution, let's
 build up two more sampling distributions: one based on a sample size of 10 and 
 another based on a sample size of 100.
 
-```{r samp-10-100, eval=FALSE}
+```{r samp-10-100, eval=TRUE}
 sample_means10 <- rep(NA, 5000)
 sample_means100 <- rep(NA, 5000)
 
@@ -244,7 +244,7 @@ get replaced with the new one.
 To see the effect that different sample sizes have on the sampling 
 distribution, plot the three distributions on top of one another.
 
-```{r plot-samps, eval=FALSE, tidy = FALSE}
+```{r plot-samps, eval=TRUE, tidy = FALSE}
 par(mfrow = c(3, 1))
 
 xlimits <- range(sample_means10)

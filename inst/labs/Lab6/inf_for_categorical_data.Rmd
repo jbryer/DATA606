@@ -46,7 +46,7 @@ a useful format to summarize the data, we will base our analysis on the
 original data set of individual responses to the survey. Load this data
 set into R with the following command.
 
-```{r head-data, eval=FALSE}
+```{r head-data, eval=TRUE}
 load("more/atheism.RData")
 ```
 
@@ -63,7 +63,7 @@ the same number using the `atheism` data.
     from the United States. Next, calculate the proportion of atheist 
     responses. Does it agree with the percentage in Table 6? If not, why?
 
-```{r us-atheism, eval=FALSE}
+```{r us-atheism, eval=TRUE}
 us12 <- subset(atheism, nationality == "United States" & year == "2012")
 ```
 
@@ -88,7 +88,7 @@ If the conditions for inference are reasonable, we can either calculate
 the standard error and construct the interval by hand, or allow the `inference`
 function to do it for us.
 
-```{r us-atheism-ci, eval=FALSE, tidy = FALSE}
+```{r us-atheism-ci, eval=TRUE, tidy = FALSE}
 inference(us12$response, est = "proportion", type = "ci", method = "theoretical", 
           success = "atheist")
 ```
@@ -132,7 +132,7 @@ error (`me`) associated with each of these values of `p` using the familiar
 approximate formula ($ME = 2 \times SE$). Lastly, we plot the two vectors 
 against each other to reveal their relationship.
 
-```{r me-plot, eval=FALSE}
+```{r me-plot, eval=TRUE}
 n <- 1000
 p <- seq(0, 1, 0.01)
 me <- 2 * sqrt(p * (1 - p)/n)
@@ -162,7 +162,7 @@ process of drawing 5000 samples of size 1040 from a population with a true
 atheist proportion of 0.1. For each of the 5000 samples we compute $\hat{p}$ 
 and then plot a histogram to visualize their distribution.
 
-```{r sim-np, eval=FALSE}
+```{r sim-np, eval=TRUE}
 p <- 0.1
 n <- 1040
 p_hats <- rep(0, 5000)
