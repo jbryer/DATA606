@@ -21,7 +21,8 @@ startLab <- function(l, dest_dir = getwd(),
 		success <- file.rename(paste0(dest_dir, '/', l, '/', rmds[1]),
 							   new_file)
 		if(success) {
-			system(paste0("open '", new_file, "'"))
+			#system(paste0("open '", new_file, "'"))
+			utils::file.edit(new_file)
 		} else {
 			stop('Rmd file could not be automically renamed with your name.
 					Please be sure to rename the file before submitting it.')
