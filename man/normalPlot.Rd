@@ -29,4 +29,3 @@ is also given.
 \seealso{
 http://www.statmethods.net/advgraphs/probability.html
 }
-

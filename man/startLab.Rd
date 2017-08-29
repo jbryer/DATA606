@@ -24,4 +24,3 @@ default is the current working directory), rename the Rmd file to include
 `file.prefix` (the default is the current logged in username), and then open
 that Rmd file to begin editting (probably in RStudio).
 }
-

@@ -17,4 +17,3 @@ Mathews, TJ and Hamilton, B.E. Trend analysis of the sex ratio at
 Number of male and female births, sex ratio at birth, and number
     of excess males: United States, 1940–2002.
 }
-

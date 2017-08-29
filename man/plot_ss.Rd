@@ -12,4 +12,3 @@ Plot sum of squares.
 \author{
 OpenIntro
 }
-

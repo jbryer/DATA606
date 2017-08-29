@@ -9,4 +9,3 @@ calc_streak(x)
 \description{
 Calculate a streak.
 }
-

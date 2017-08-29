@@ -9,4 +9,3 @@ getLabs()
 \description{
 Returns a list of available labs.
 }
-

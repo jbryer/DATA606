@@ -1,5 +1,5 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-IS606.build.R
+DATA606.build.R
 .gitignore
 README.md

@@ -14,17 +14,17 @@
 startLab <- function(l, dest_dir = getwd(),
 					 file.prefix = paste0(Sys.info()['user'], '-')) {
 	path <- paste0(find.package('DATA606'), '/Labs/', l)
-	success <- file.copy(path, dest_dir, recursive=TRUE, overwrite=FALSE)
+	file.copy(path, dest_dir, recursive=TRUE, overwrite=FALSE)
 	rmds <- list.files(paste0(dest_dir, '/', l), pattern='.Rmd')
 	new_file <- paste0(dest_dir, '/', l, '/', file.prefix, rmds[1])
+	success <- file.exists(paste0(dest_dir, '/', l, '/', rmds[1]))
 	if(success) {
 		success <- file.rename(paste0(dest_dir, '/', l, '/', rmds[1]),
 							   new_file)
 		if(success) {
-			#system(paste0("open '", new_file, "'"))
-			utils::file.edit(new_file)
+			file.edit(new_file)
 		} else {
-			stop('Rmd file could not be automically renamed with your name.
+			warning('Rmd file could not be automically renamed with your name.
 					Please be sure to rename the file before submitting it.')
 		}
 	} else {

@@ -12,4 +12,3 @@ viewLab(l)
 \description{
 Opens the HTML page for the lab in the default browser.
 }
-

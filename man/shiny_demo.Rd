@@ -31,4 +31,3 @@ apps located there in the installed package.
 \author{
 Jason Bryer (jason@bryer.org)
 }
-

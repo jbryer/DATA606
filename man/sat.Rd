@@ -8,4 +8,3 @@
 Verbal.SAT: a numeric vector, student's SAT verbal score.
 Math.SAT: a numeric vector, student's SAT math score
 Sex: a character vector with F = female and M = male}
-

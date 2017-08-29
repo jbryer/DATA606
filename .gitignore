@@ -1,4 +1,4 @@
-IS606.Rproj
+DATA606.Rproj
 .Rproj.user
 .DS_Store
 .Rhistory
@@ -6,3 +6,6 @@ inst/shiny/BayesBilliards/rsconnect
 inst/shiny/BayesBilliards/figure
 /inst/shiny/lottery/rsconnect
 /DATA606.Rproj
+/Data from openintro.org
+/inst/shiny/BayesBilliards/Bayes An Essay towards solving a Problem in the Doctrine of Chances.pdf
+/rbnz.xlsx

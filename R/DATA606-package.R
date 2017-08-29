@@ -12,7 +12,7 @@ NULL
 #' Function executed when the package is loaded.
 #'
 #' @param libname the library name.
-#' @param pkgname the package name (hopefully 'IS606').
+#' @param pkgname the package name (hopefully 'DATA606').
 #' @name onAttach
 .onAttach <- function(libname, pkgname) {
 	cat("\nWelcome to CUNY DATA606 Statistics and Probability for Data Analytics",

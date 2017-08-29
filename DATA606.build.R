@@ -1,8 +1,7 @@
-# Build and Test Script for IS606 Package
-# Package for CUNY IS606 course - Statistics and Probability for Data Analysis
+# Build and Test Script for DATA606 Package
+# Package for CUNY DATA606 course - Statistics and Probability for Data Analysis
 
-install.packages(c('devtools','roxygen2',
-				   'ggplot2','reshape2','psych',
+install.packages(c('devtools','roxygen2','ggplot2','reshape2','psych',
 				   'openintro','OIdata'))
 
 ##### Building #################################################################
@@ -13,7 +12,7 @@ install(build_vignettes=TRUE)
 build()
 
 ##### Testing ##################################################################
-library(IS606)
+library(DATA606)
 
 vignette(package='DATA606') # Documentation (including the book)
 vignette('os3')
@@ -22,9 +21,9 @@ getLabs()                 # List the available labs
 data(package='DATA606')     # List the available data
 
 # Demos
-IS606::demo('CLT_mean')
+DATA606::demo('CLT_mean')
 
-shiny_demo(package='IS606')
+shiny_demo(package='DATA606')
 
 shiny_demo('BayesBilliards')
 shiny_demo('lottery')

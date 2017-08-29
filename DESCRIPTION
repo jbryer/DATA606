@@ -1,15 +1,15 @@
 Package: DATA606
 Type: Package
 Title: DATA606 Statistics and Probability for Data Analytics
-Version: 0.1
-Date: 2015-07-10
+Version: 0.2
+Date: 2017-08-29
 Author: Jason Bryer
 Maintainer: Jason Bryer <jason@bryer.org>
-Description: Package to support CUNY IS 606 Statistics and Probability for
+Description: Package to support CUNY DATA606 Statistics and Probability for
     Analytics course.
 License: Creative Commons
 LazyData: TRUE
 Suggests:
     R.rsp
 VignetteBuilder: R.rsp
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1

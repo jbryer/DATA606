@@ -5,9 +5,9 @@ Website: [bryer.org](http://jason.bryer.org)
 
 The app is deployed to RStudio's [shinyapps.io](https://jbryer.shinyapps.io/BayesPopulation/) service at [jbryer.shinyapps.io/BayesPopulation](https://jbryer.shinyapps.io/BayesPopulation).
 
-The Shiny App is included in the [`IS606`](https://github.com/jbryer/IS606) package on Github and can be run, once installed, using the `IS606::shiny_demo('BayesPopulation')` function.
+The Shiny App is included in the [`DATA606`](https://github.com/jbryer/DATA606) package on Github and can be run, once installed, using the `DATA606::shiny_demo('BayesPopulation')` function.
 
-Or, run the app directly from Github using the `shiny::runGitHub('IS606', 'jbryer', subdir='inst/shiny/BayesPopulation')` function.
+Or, run the app directly from Github using the `shiny::runGitHub('DATA606', 'jbryer', subdir='inst/shiny/BayesPopulation')` function.
 
 ### Strategy
 
