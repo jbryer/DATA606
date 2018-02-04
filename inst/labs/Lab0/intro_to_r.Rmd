@@ -40,7 +40,7 @@ To get you started, enter the following command at the R prompt (i.e. right afte
 from this document.
 
 ```{r load-abrbuthnot-data, eval=TRUE}
-source("more/arbuthnot.R")
+source("Lab0/more/arbuthnot.R")
 ```
 
 This command instructs R to access the OpenIntro website and fetch some data: 
