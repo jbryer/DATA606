@@ -42,7 +42,6 @@ shinyServer(function(input, output, clientData, session) {
   observeEvent(input$sampleSize, { resetSamples() })
   # Uncomment this to have the figure reset when number of samples to draw is changes
   # observeEvent(input$samplesToDraw, { resetSamples() })
-  observeEvent(input$samplesToDraw, { resetSamples() })
 
   observeEvent(input$sample, {
   	validate(
