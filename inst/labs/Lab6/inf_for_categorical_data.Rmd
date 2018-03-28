@@ -25,7 +25,7 @@ categorical data.
 To access the press release for the poll, conducted by WIN-Gallup 
 International, click on the following link:
 
-*<http://www.wingia.com/web/files/richeditor/filemanager/Global_INDEX_of_Religiosity_and_Atheism_PR__6.pdf>*
+*<https://github.com/jbryer/DATA606/blob/master/inst/labs/Lab6/more/Global_INDEX_of_Religiosity_and_Atheism_PR__6.pdf>*
 
 Take a moment to review the report then address the following questions.
 
