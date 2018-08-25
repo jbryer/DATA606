@@ -4,8 +4,8 @@
 \alias{startLab}
 \title{Starts a new lab.}
 \usage{
-startLab(l, dest_dir = getwd(), file.prefix = paste0(Sys.info()["user"],
-  "-"))
+startLab(l, dest_dir = getwd(),
+  file.prefix = paste0(Sys.info()["user"], "-"))
 }
 \arguments{
 \item{l}{the lab name (see \{code{\link{getLabs}} for available labs).}

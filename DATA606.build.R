@@ -8,7 +8,7 @@ install.packages(c('devtools','roxygen2','ggplot2','reshape2','psych',
 library(devtools)
 
 document()
-install(build_vignettes=TRUE)
+devtools::install(build_vignettes=TRUE)
 build()
 
 ##### Testing ##################################################################
@@ -17,7 +17,7 @@ library(DATA606)
 vignette(package='DATA606') # Documentation (including the book)
 vignette('os3')
 demo(package='DATA606')     # List the available demos (including shiny apps)
-getLabs()                 # List the available labs
+getLabs()                   # List the available labs
 data(package='DATA606')     # List the available data
 
 # Demos
