@@ -3,6 +3,7 @@
 export(calc_streak)
 export(demo)
 export(getLabs)
+export(inference)
 export(normalPlot)
 export(plot_ss)
 export(qqnormsim)
