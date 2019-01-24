@@ -13,4 +13,4 @@ Depends: shiny, openintro, OIdata, ggplot2, markdown
 Suggests:
     R.rsp, grid, png, scales, BHH2, gridExtra, plotrix, shinythemes, tidyr, dplyr, reshape2, readxl, knitr
 VignetteBuilder: R.rsp
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1

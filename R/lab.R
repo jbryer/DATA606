@@ -23,6 +23,8 @@ startLab <- function(l, dest_dir = getwd(),
 							   new_file)
 		if(success) {
 			file.edit(new_file)
+			message(paste0("Setting working directory to ", path))
+			setwd(path)
 		} else {
 			warning('Rmd file could not be automically renamed with your name.
 					Please be sure to rename the file before submitting it.')

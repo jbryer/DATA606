@@ -5,11 +5,10 @@ install.packages(c('devtools','roxygen2','ggplot2','reshape2','psych',
 				   'openintro','OIdata'))
 
 ##### Building #################################################################
-library(devtools)
 
-document()
+devtools::document()
 devtools::install(build_vignettes=TRUE)
-build()
+devtools::build()
 
 ##### Testing ##################################################################
 library(DATA606)
