@@ -1,5 +1,5 @@
 require(shiny)
-require(shinyIncubator)
+# require(shinyIncubator)
 require(ggplot2)
 
 theme_update(panel.background=element_blank(),
