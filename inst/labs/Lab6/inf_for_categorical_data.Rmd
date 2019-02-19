@@ -245,9 +245,3 @@ from 2005 and 2012 for 39 countries.
     *Hint:* Refer to your plot of the relationship between $p$ and margin of 
     error. Do not use the data set to answer this question.
 
-
-<div id="license">
-This is a product of OpenIntro that is released under a [Creative Commons 
-Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0). 
-This lab was written for OpenIntro by Andrew Bray and Mine &Ccedil;etinkaya-Rundel.
-</div>

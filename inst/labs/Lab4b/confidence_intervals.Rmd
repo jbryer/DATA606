@@ -177,8 +177,4 @@ c(lower_vector[1], upper_vector[1])
     mean. How does this percentage compare to the confidence level selected for
     the intervals?
 
-<div id="license">
-This is a product of OpenIntro that is released under a [Creative Commons 
-Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0).
-This lab was written for OpenIntro by Andrew Bray and Mine &Ccedil;etinkaya-Rundel.
-</div>
+

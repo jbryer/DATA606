@@ -292,8 +292,3 @@ Ames.  Now you'll try to estimate the mean home price.
     we're concerned with making estimates that are more often close to the 
     true value, would we prefer a distribution with a large or small spread?
 
-<div id="license">
-This is a product of OpenIntro that is released under a [Creative Commons 
-Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0).
-This lab was written for OpenIntro by Andrew Bray and Mine &Ccedil;etinkaya-Rundel.
-</div>

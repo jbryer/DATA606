@@ -20,4 +20,3 @@ NA
 #' Sex: a character vector with F = female and M = male
 #' @docType data
 NA
-

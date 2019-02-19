@@ -252,7 +252,3 @@ summary(m_full)
 19. Would you be comfortable generalizing your conclusions to apply to professors
     generally (at any university)? Why or why not?
 
-<div id="license">
-This is a product of OpenIntro that is released under a [Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0). This lab was written by 
-Mine &Ccedil;etinkaya-Rundel and Andrew Bray.
-</div>

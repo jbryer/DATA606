@@ -298,9 +298,3 @@ Feel free to browse around the websites for [R](http://www.r-project.org) and
 [RStudio](http://rstudio.org) if you're interested in learning more, or find 
 more labs for practice at http://openintro.org.
 
-<div id="license">
-This is a product of OpenIntro that is released under a 
-[Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0). 
-This lab was adapted for OpenIntro by Andrew Bray and Mine &Ccedil;etinkaya-Rundel
-from a lab written by Mark Hansen of UCLA Statistics.
-</div>

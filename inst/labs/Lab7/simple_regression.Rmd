@@ -235,10 +235,3 @@ qqline(m1$residuals)  # adds diagonal line to the normal prob plot
 
 -   Check the model diagnostics for the regression model with the variable you 
     decided was the best predictor for runs.
-
-<div id="license">
-This is a product of OpenIntro that is released under a [Creative Commons 
-Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0). 
-This lab was adapted for OpenIntro by Andrew Bray and Mine &Ccedil;etinkaya-Rundel 
-from a lab written by the faculty and TAs of UCLA Statistics.
-</div>
