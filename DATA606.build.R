@@ -14,7 +14,7 @@ devtools::build()
 library(DATA606)
 
 vignette(package='DATA606') # Documentation (including the book)
-vignette('os3')
+vignette('os4')
 demo(package='DATA606')     # List the available demos (including shiny apps)
 getLabs()                   # List the available labs
 data(package='DATA606')     # List the available data
@@ -30,16 +30,16 @@ shiny_demo('gambler')
 shiny_demo('DualScales')
 
 # View labs
-viewLab('Lab0')
 viewLab('Lab1')
 viewLab('Lab2')
 viewLab('Lab3')
-viewLab('Lab4a')
-viewLab('Lab4b')
-viewLab('Lab5')
+viewLab('Lab4')
+viewLab('Lab5a')
+viewLab('Lab5b')
 viewLab('Lab6')
 viewLab('Lab7')
 viewLab('Lab8')
+viewLab('Lab9')
 
 # Start labs
-startLab('Lab0')
+startLab('Lab1')
