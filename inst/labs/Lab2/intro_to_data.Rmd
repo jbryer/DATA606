@@ -457,3 +457,10 @@ will serve us well throughout this course.
     `weight` and determine what proportion of the weights are within one 
     standard deviation of the mean.
 
+
+
+
+
+
+
+<!-- This is a product of OpenIntro that is released under a Creative Commons Attribution-ShareAlike 3.0 Unported. This lab was written by Mine Çetinkaya-Rundel and Andrew Bray. -->

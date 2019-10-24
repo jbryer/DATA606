@@ -147,3 +147,9 @@ and/or a confidence interval. Answer your question using the `inference`
 function, report the statistical results, and also provide an explanation in 
 plain language.
 
+
+
+
+
+
+<!-- This is a product of OpenIntro that is released under a Creative Commons Attribution-ShareAlike 3.0 Unported. This lab was written by Mine Çetinkaya-Rundel and Andrew Bray. -->

@@ -269,3 +269,9 @@ Using `calc_streak`, compute the streak lengths of `sim_basket`.
     comparison, do you have evidence that the hot hand model fits Kobe's 
     shooting patterns? Explain.
 
+
+
+
+
+
+<!-- This is a product of OpenIntro that is released under a Creative Commons Attribution-ShareAlike 3.0 Unported. This lab was written by Mine Çetinkaya-Rundel and Andrew Bray. -->
