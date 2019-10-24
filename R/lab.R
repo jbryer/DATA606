@@ -5,7 +5,7 @@
 #' `file.prefix` (the default is the current logged in username), and then open
 #' that Rmd file to begin editting (probably in RStudio).
 #'
-#' @param l the lab name (see \{code{\link{getLabs}} for available labs).
+#' @param l the lab name (see \code{\link{getLabs}} for available labs).
 #' @param dest_dir where the lab template will be copied to.
 #' @param file.prefix the prefix to put before the Rmd file. This is typically
 #'        your last name but be sure to check the assignment instructions.
