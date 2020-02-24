@@ -69,7 +69,8 @@ line that best follows their association. Use the following interactive
 function to select the line that you think does the best job of going through 
 the cloud of points.
 
-```{r plotss-atbats-runs, eval=TRUE}
+```{r plotss-atbats-runs, eval=FALSE}
+# Note that this chunk will only run in interactive mode
 plot_ss(x = mlb11$at_bats, y = mlb11$runs)
 ```
 
@@ -88,6 +89,7 @@ the sum of squared residuals. To visualize the squared residuals, you can rerun
 the plot command and add the argument `showSquares = TRUE`.
 
 ```{r plotss-atbats-runs-squares, eval=TRUE}
+# Note that this chunk will only run in interactive mode
 plot_ss(x = mlb11$at_bats, y = mlb11$runs, showSquares = TRUE)
 ```
 
