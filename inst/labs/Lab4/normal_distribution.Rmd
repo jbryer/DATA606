@@ -64,7 +64,7 @@ calories from fat.
 
 Let's first focus on just products from McDonalds and Dairy Queen.
 
-```{r male-female}
+```{r}
 mcdonalds <- fastfood %>%
   filter(restaurant == "McDonalds")
 dairy_queen <- fastfood %>%
@@ -88,7 +88,7 @@ You'll be focusing on calories from fat from Dairy Queen products, so let's stor
 them as a separate object and then calculate some statistics that will be referenced 
 later. 
 
-```{r female-hgt-mean-sd}
+```{r}
 dqmean <- mean(dairy_queen$cal_fat)
 dqsd   <- sd(dairy_queen$cal_fat)
 ```
@@ -106,7 +106,7 @@ same exact shape; they only differ in their y-axis. You can verify this by
 comparing the frequency histogram you constructed earlier and the density
 histogram created by the commands below.
 
-```{r hist-height}
+```{r}
 ggplot(data = dairy_queen, aes(x = cal_fat)) +
         geom_blank() +
         geom_histogram(aes(y = ..density..)) +
@@ -133,7 +133,7 @@ close the histogram is to the curve. An alternative approach involves
 constructing a normal probability plot, also called a normal Q-Q plot for 
 "quantile-quantile".
 
-```{r qq}
+```{r}
 ggplot(data = dairy_queen, aes(sample = cal_fat)) + 
   geom_line(stat = "qq")
 ```
@@ -158,7 +158,7 @@ A useful way to address this question is to rephrase it as: what do probability
 plots look like for data that I *know* came from a normal distribution?  We can 
 answer this by simulating data from a normal distribution using `rnorm`.
 
-```{r sim-norm}
+```{r}
 sim_norm <- rnorm(n = nrow(dairy_queen), mean = dqmean, sd = dqsd)
 ```
 
@@ -180,7 +180,7 @@ function. It shows the Q-Q plot corresponding to the original data in the top
 left corner, and the Q-Q plots of 8 different simulated normal data.  It may be
 helpful to click the zoom button in the plot window.
 
-```{r qqnormsim}
+```{r}
 qqnormsim(sample = cal_fat, data = dairy_queen)
 ```
 
@@ -207,7 +207,7 @@ distributed (a very close approximation is also okay), we can find this probabil
 by calculating a Z score and consulting a Z table (also called a normal probability
 table).  In R, this is done in one step with the function `pnorm()`.
 
-```{r pnorm}
+```{r}
 1 - pnorm(q = 600, mean = dqmean, sd = dqsd)
 ```
 
@@ -221,7 +221,7 @@ probability.  If we want to calculate the probability empirically, we simply
 need to determine how many observations fall above 600 then divide this number 
 by the total sample size.
 
-```{r probability}
+```{r}
 dairy_queen %>% 
   filter(cal_fat > 600) %>%
   summarise(percent = n() / nrow(dairy_queen))
