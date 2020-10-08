@@ -179,29 +179,37 @@ app to investigate how the shape, center, and spread of the distribution of
 $\hat{p}$ changes as $n$ and $p$ changes.
 
 ```{r sf-app, echo=FALSE, eval=FALSE}
-inputPanel(
-  numericInput("n", label = "Sample size:", value = 300),
+library(shiny)
+shinyApp(
+  ui = fluidPage(
+      numericInput("n", label = "Sample size:", value = 300),
+      
+      sliderInput("p", label = "Population proportion:",
+                  min = 0, max = 1, value = 0.1, step = 0.01),
+      
+      numericInput("x_min", label = "Min for x-axis:", value = 0, min = 0, max = 1),
+      numericInput("x_max", label = "Max for x-axis:", value = 1, min = 0, max = 1),
+    plotOutput('plotOutput')
+  ),
   
-  sliderInput("p", label = "Population proportion:",
-              min = 0, max = 1, value = 0.1, step = 0.01),
+  server = function(input, output) { 
+    output$plotOutput = renderPlot({
+      pp <- data.frame(p_hat = rep(0, 5000))
+      for(i in 1:5000){
+        samp <- sample(c(TRUE, FALSE), input$n, replace = TRUE, 
+                       prob = c(input$p, 1 - input$p))
+        pp$p_hat[i] <- sum(samp == TRUE) / input$n
+      }
+      bw <- diff(range(pp$p_hat)) / 30
+      ggplot(data = pp, aes(x = p_hat)) +
+        geom_histogram(binwidth = bw) +
+        xlim(input$x_min, input$x_max) +
+        ggtitle(paste0("Distribution of p_hats, drawn from p = ", input$p, ", n = ", input$n))
+    })
+  },
   
-  numericInput("x_min", label = "Min for x-axis:", value = 0, min = 0, max = 1),
-  numericInput("x_max", label = "Max for x-axis:", value = 1, min = 0, max = 1)
+  options = list(height = 500)
 )
-
-renderPlot({
-  pp <- data.frame(p_hat = rep(0, 5000))
-  for(i in 1:5000){
-    samp <- sample(c(TRUE, FALSE), input$n, replace = TRUE, 
-                   prob = c(input$p, 1 - input$p))
-    pp$p_hat[i] <- sum(samp == TRUE) / input$n
-  }
-  bw <- diff(range(pp$p_hat)) / 30
-  ggplot(data = pp, aes(x = p_hat)) +
-    geom_histogram(binwidth = bw) +
-    xlim(input$x_min, input$x_max) +
-    ggtitle(paste0("Distribution of p_hats, drawn from p = ", input$p, ", n = ", input$n))
-})
 ```
 
 1.  Describe the sampling distribution of sample proportions at $n = 300$ and 
