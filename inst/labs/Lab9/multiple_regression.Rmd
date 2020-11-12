@@ -16,7 +16,7 @@ editor_options:
 ---
 
 ```{r global_options, include=FALSE}
-knitr::opts_chunk$set(eval = TRUE, results = FALSE, fig.show = "hide", message = FALSE)
+knitr::opts_chunk$set(eval = TRUE, results = FALSE, fig.show = "hide", message = FALSE, warning = FALSE)
 ```
 
 ## Grading the professor
@@ -185,7 +185,7 @@ summary(m_bty_gen)
     for this model are reasonable using diagnostic plots.
 
 8.  Is `bty_avg` still a significant predictor of `score`? Has the addition
-    of `gender` to the model changed the parameter estimate for `gender`?
+    of `gender` to the model changed the parameter estimate for `bty_avg`?
 
 Note that the estimate for `gender` is now called `gendermale`. You'll see this 
 name change whenever you introduce a categorical variable. The reason is that R 

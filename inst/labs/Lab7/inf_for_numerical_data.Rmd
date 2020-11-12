@@ -16,7 +16,7 @@ editor_options:
 ---
 
 ```{r global_options, include=FALSE}
-knitr::opts_chunk$set(eval = TRUE, results = FALSE, fig.show = "hide", message = FALSE)
+knitr::opts_chunk$set(eval = TRUE, results = FALSE, fig.show = "hide", message = FALSE, warning = FALSE)
 ```
 
 ## Getting Started
@@ -35,9 +35,6 @@ library(openintro)
 library(infer)
 ```
 
-### Creating a reproducible lab report
-
-To create your new lab report, in RStudio, go to New File -> R Markdown... Then, choose From Template and then choose `Lab Report for OpenIntro Statistics Labs` from the list of templates.
 
 ### The data
 
@@ -189,17 +186,17 @@ interpret this interval in context of the data.
 1.  Calculate a 95% confidence interval for the average height in meters (`height`)
 and interpret it in context.
 
-1.  Calculate a new confidence interval for the same parameter at the 90% 
+2.  Calculate a new confidence interval for the same parameter at the 90% 
 confidence level. Comment on the width of this interval versus 
 the one obtained in the previous exercise.
 
-1.  Conduct a hypothesis test evaluating whether the average height is different
+3.  Conduct a hypothesis test evaluating whether the average height is different
 for those who exercise at least three times a week and those who don't.
 
-1.  Now, a non-inference task: Determine the number of different options there 
+4.  Now, a non-inference task: Determine the number of different options there 
 are in the dataset for the `hours_tv_per_school_day` there are.
 
-1. Come up with a research question evaluating the relationship between height 
+5. Come up with a research question evaluating the relationship between height 
 or weight and sleep. Formulate the question in a way that it can be answered using
 a hypothesis test and/or a confidence interval. Report the statistical results, 
 and also provide an explanation in plain language. Be sure to check all 
