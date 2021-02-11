@@ -16,7 +16,7 @@ editor_options:
 ---
 
 ```{r echo = FALSE}
-knitr::opts_chunk$set(eval = TRUE, results = FALSE, fig.show = "hide", message = FALSE, warning = FALSE)
+knitr::opts_chunk$set(eval = TRUE, results = FALSE, message = FALSE, warning = FALSE)
 ```
 
 In this lab, you'll investigate the probability distribution that is most central
