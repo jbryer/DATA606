@@ -4,8 +4,13 @@
 \alias{shiny_demo}
 \title{Run a Shiny App from a Package}
 \usage{
-shiny_demo(topic, package = NULL, lib.loc = NULL,
-  verbose = getOption("verbose"), includeAllInstalled = FALSE)
+shiny_demo(
+  topic,
+  package = NULL,
+  lib.loc = NULL,
+  verbose = getOption("verbose"),
+  includeAllInstalled = FALSE
+)
 }
 \arguments{
 \item{topic}{the topic/app which should be run.}

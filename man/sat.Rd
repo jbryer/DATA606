@@ -4,10 +4,12 @@
 \name{sat}
 \alias{sat}
 \title{SAT verbal and math scores}
-\format{164 observations of 3 variables:
+\format{
+164 observations of 3 variables:
 Verbal.SAT: a numeric vector, student's SAT verbal score.
 Math.SAT: a numeric vector, student's SAT math score
-Sex: a character vector with F = female and M = male}
+Sex: a character vector with F = female and M = male
+}
 \description{
 SAT verbal and math scores
 }

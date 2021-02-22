@@ -3,12 +3,12 @@
 \docType{package}
 \name{DATA606-package}
 \alias{DATA606-package}
-\title{R Package to support DATA606 Statistics and Probabilty for Data Analytics.}
+\title{R Package to support DATA606 Statistics and Probability for Data Analytics.}
 \description{
-DATA606 Statistics and Probabilty for Data Analytics
+DATA606 Statistics and Probability for Data Analytics
 }
 \author{
-\email{jason@bryer.org}
+\email{jason.bryer@cuny.edu}
 }
 \keyword{package}
 \keyword{shiny}

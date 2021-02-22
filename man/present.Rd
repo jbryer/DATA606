@@ -4,10 +4,12 @@
 \name{present}
 \alias{present}
 \title{Birth rates from 1940 to 2002}
-\format{A data frame with 63 observations on the following 3 variables.
+\format{
+A data frame with 63 observations on the following 3 variables.
 year: a numeric vector, 1940-2002
 boys: a numeric vector, number of male births
-girls: a numeric vector, number of female births}
+girls: a numeric vector, number of female births
+}
 \source{
 Mathews, TJ and Hamilton, B.E. Trend analysis of the sex ratio at
     birth in the United States. National Vital Statistics Reports. vol 53,

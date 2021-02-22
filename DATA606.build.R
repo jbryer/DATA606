@@ -7,7 +7,8 @@ install.packages(c('devtools','roxygen2','ggplot2','reshape2','psych',
 ##### Building #################################################################
 
 devtools::document()
-devtools::install(build_vignettes=TRUE)
+devtools::install(build_vignettes=FALSE, dependencies=FALSE)
+devtools::install(build_vignettes=TRUE, dependencies=FALSE)
 devtools::build()
 
 ##### Testing ##################################################################

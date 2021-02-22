@@ -4,23 +4,18 @@
 \alias{startLab}
 \title{Starts a new lab.}
 \usage{
-startLab(l, dest_dir = getwd(),
-  file.prefix = paste0(Sys.info()["user"], "-"))
+startLab(l, dest_dir = getwd())
 }
 \arguments{
-\item{l}{the lab name (see \{code{\link{getLabs}} for available labs).}
+\item{l}{the lab name (see \code{\link{getLabs}} for available labs).}
 
 \item{dest_dir}{where the lab template will be copied to.}
-
-\item{file.prefix}{the prefix to put before the Rmd file. This is typically
-your last name but be sure to check the assignment instructions.}
 }
 \value{
 the full path to the new Rmarkdown file for the lab.
 }
 \description{
 This will copy the lab and associated files to the `dest_dir` directory (the
-default is the current working directory), rename the Rmd file to include
-`file.prefix` (the default is the current logged in username), and then open
-that Rmd file to begin editting (probably in RStudio).
+default is the current working directory) and then open
+that Rmd file to begin editing (probably in RStudio).
 }

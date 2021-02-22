@@ -4,12 +4,26 @@
 \alias{inference}
 \title{Inference function for OpenIntro labs}
 \usage{
-inference(y, x = NULL, est = c("mean", "median", "proportion"),
-  success = NULL, order = NULL, conflevel = 0.95, siglevel = 0.05,
-  null = NULL, alternative = c("less", "greater", "twosided"),
-  type = c("ci", "ht"), method = c("theoretical", "simulation"),
-  simdist = FALSE, nsim = 10000, seed = NULL, sum_stats = TRUE,
-  eda_plot = TRUE, inf_plot = TRUE, inf_lines = TRUE)
+inference(
+  y,
+  x = NULL,
+  est = c("mean", "median", "proportion"),
+  success = NULL,
+  order = NULL,
+  conflevel = 0.95,
+  siglevel = 0.05,
+  null = NULL,
+  alternative = c("less", "greater", "twosided"),
+  type = c("ci", "ht"),
+  method = c("theoretical", "simulation"),
+  simdist = FALSE,
+  nsim = 10000,
+  seed = NULL,
+  sum_stats = TRUE,
+  eda_plot = TRUE,
+  inf_plot = TRUE,
+  inf_lines = TRUE
+)
 }
 \description{
 Inference function for OpenIntro labs

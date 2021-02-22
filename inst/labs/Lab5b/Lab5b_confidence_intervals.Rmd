@@ -16,19 +16,13 @@ editor_options:
 ---
 
 ```{r global_options, include=FALSE}
-knitr::opts_chunk$set(eval = TRUE, results = FALSE, message = FALSE, warning = FALSE)
+knitr::opts_chunk$set(eval = TRUE, message = FALSE, warning = FALSE)
 ```
 
-If you have access to data on an entire population, say the opinion of every adult in the United States on whether or not they think climate change is affecting their local community, it's straightforward to answer questions like, "What percent of US adults think climate change is affecting their local community?". 
-Similarly, if you had demographic information on the population you could examine how, if at all, this opinion varies among young and old adults and adults with different leanings.
-If you have access to only a sample of the population, as is often the case, the task becomes more complicated. 
-What is your best guess for this proportion if you only have data from a small sample of adults?
-This type of situation requires that you use your sample to make inference on what your population looks like.
+If you have access to data on an entire population, say the opinion of every adult in the United States on whether or not they think climate change is affecting their local community, it's straightforward to answer questions like, "What percent of US adults think climate change is affecting their local community?". Similarly, if you had demographic information on the population you could examine how, if at all, this opinion varies among young and old adults and adults with different leanings. If you have access to only a sample of the population, as is often the case, the task becomes more complicated. What is your best guess for this proportion if you only have data from a small sample of adults? This type of situation requires that you use your sample to make inference on what your population looks like.
 
 <div id="boxedtext">
-**Setting a seed:** You will take random samples and build sampling distributions
-in this lab, which means you should set a seed on top of your lab. If this concept
-is new to you, review the lab on probability.
+**Setting a seed:** You will take random samples and build sampling distributions in this lab, which means you should set a seed on top of your lab. If this concept is new to you, review the lab on probability.
 </div>
 
 ## Getting Started
@@ -45,10 +39,6 @@ library(openintro)
 library(infer)
 ```
 
-### Creating a reproducible lab report
-
-To create your new lab report, in RStudio, go to New File -> R Markdown... Then, choose From Template and then choose `Lab Report for OpenIntro Statistics Labs` from the list of templates.
-
 ### The data
 
 A 2019 Pew Research report states the following:
@@ -59,9 +49,7 @@ To keep our computation simple, we will assume a total population size of 100,00
 >
 >**Source:** [Most Americans say climate change impacts their community, but effects vary by region](https://www.pewresearch.org/fact-tank/2019/12/02/most-americans-say-climate-change-impacts-their-community-but-effects-vary-by-region/)
 
-In this lab, you will assume this 62% is a true population proportion and learn about how sample proportions can vary from sample to sample by taking smaller samples from the population. 
-We will first create our population assuming a population size of 100,000. 
-This means 62,000 (62%) of the adult population think climate change impacts their community, and the remaining 38,000 does not think so.
+In this lab, you will assume this 62% is a true population proportion and learn about how sample proportions can vary from sample to sample by taking smaller samples from the population. We will first create our population assuming a population size of 100,000. This means 62,000 (62%) of the adult population think climate change impacts their community, and the remaining 38,000 does not think so.
 
 ```{r}
 us_adults <- tibble(
@@ -109,22 +97,13 @@ samp <- us_adults %>%
 
 ## Confidence intervals
 
-Return for a moment to the question that first motivated this lab: based on this sample, what can you infer about the population? 
-With just one sample, the best estimate of the proportion of US adults who think climate change affects their local community would be the sample proportion, usually denoted as $\hat{p}$ (here we are calling it `p_hat`). 
-That serves as a good **point estimate**, but it would be useful to also communicate how uncertain you are of that estimate. 
-This uncertainty can be quantified using a **confidence interval**.
+Return for a moment to the question that first motivated this lab: based on this sample, what can you infer about the population? With just one sample, the best estimate of the proportion of US adults who think climate change affects their local community would be the sample proportion, usually denoted as $\hat{p}$ (here we are calling it `p_hat`). That serves as a good **point estimate**, but it would be useful to also communicate how uncertain you are of that estimate. This uncertainty can be quantified using a **confidence interval**.
 
-One way of calculating a confidence interval for a population proportion is based on the Central Limit Theorem, as $\hat{p} \pm z^\star SE_{\hat{p}}$ is, or more precisely, as
-\[ \hat{p} \pm z^\star \sqrt{ \frac{\hat{p} (1-\hat{p})}{n} } \]
+One way of calculating a confidence interval for a population proportion is based on the Central Limit Theorem, as $\hat{p} \pm z^\star SE_{\hat{p}}$ is, or more precisely, as \[ \hat{p} \pm z^\star \sqrt{ \frac{\hat{p} (1-\hat{p})}{n} } \]
 
-Another way is using simulation, or to be more specific, using **bootstrapping**. 
-The term **bootstrapping** comes from the phrase "pulling oneself up by one’s bootstraps", which is a metaphor for accomplishing an impossible task without any outside help.
-In this case the impossible task is estimating a population parameter (the unknown population proportion), and we’ll accomplish it using data from only the given sample.
-Note that this notion of saying something about a population parameter using only information from an observed sample is the crux of statistical inference, it is not limited to bootstrapping. 
+Another way is using simulation, or to be more specific, using **bootstrapping**. The term **bootstrapping** comes from the phrase "pulling oneself up by one's bootstraps", which is a metaphor for accomplishing an impossible task without any outside help. In this case the impossible task is estimating a population parameter (the unknown population proportion), and we'll accomplish it using data from only the given sample. Note that this notion of saying something about a population parameter using only information from an observed sample is the crux of statistical inference, it is not limited to bootstrapping. 
 
-In essence, bootstrapping assumes that there are more of observations in the populations like the ones in the observed sample. 
-So we "reconstruct" the population by resampling from our sample, with replacement. 
-The bootstrapping scheme is as follows:
+In essence, bootstrapping assumes that there are more of observations in the populations like the ones in the observed sample. So we "reconstruct" the population by resampling from our sample, with replacement. The bootstrapping scheme is as follows:
 
 - **Step 1.** Take a bootstrap sample - a random sample taken **with replacement** from the original sample, of the same size as the original sample.
 - **Step 2.** Calculate the bootstrap statistic - a statistic such as mean, median, proportion, slope, etc. computed on the bootstrap samples.
@@ -156,8 +135,7 @@ samp %>%
 - In `generate` we provide the number of resamples we want from the population in the `reps` argument (this should be a reasonably large number) as well as the type of resampling we want to do, which is `"bootstrap"` in the case of constructing a confidence interval.
 - Then, we `calculate` the sample statistic of interest for each of these resamples, which is `prop`ortion.
 
-Feel free to test out the rest of the arguments for these functions, since these commands will be used together to calculate confidence intervals and solve inference problems for the rest of the semester.
-But we will also walk you through more examples in future chapters.
+Feel free to test out the rest of the arguments for these functions, since these commands will be used together to calculate confidence intervals and solve inference problems for the rest of the semester. But we will also walk you through more examples in future chapters.
 
 To recap: even though we don't know what the full population looks like, we're 95% confident that the true proportion of US adults who think climate change affects their local community is between the two bounds reported as result of this pipeline.
 
@@ -181,8 +159,7 @@ In the next part of the lab, you will collect many samples to learn more about h
 -   Calculate the sample proportion, and use these to calculate and store the lower and upper bounds of the confidence intervals.
 -   Repeat these steps 50 times.
 
-Doing this would require learning programming concepts like iteration so that you can automate repeating running the code you've developed so far many times to obtain many (50) confidence intervals. 
-In order to keep the programming simpler, we are providing the interactive app below that basically does this for you and created a plot similar to Figure 5.6 on [OpenIntro Statistics, 4th Edition (page 182)](https://www.openintro.org/os).
+Doing this would require learning programming concepts like iteration so that you can automate repeating running the code you've developed so far many times to obtain many (50) confidence intervals. In order to keep the programming simpler, we are providing the interactive app below that basically does this for you and created a plot similar to Figure 5.6 on [OpenIntro Statistics, 4th Edition (page 182)](https://www.openintro.org/os).
 
 ```{r shiny, echo=FALSE, eval=FALSE, results = TRUE}
 # This R chunk will only run in interactive mode

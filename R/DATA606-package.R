@@ -1,9 +1,9 @@
-#' DATA606 Statistics and Probabilty for Data Analytics
+#' DATA606 Statistics and Probability for Data Analytics
 #'
 #' @name DATA606-package
 #' @docType package
-#' @title R Package to support DATA606 Statistics and Probabilty for Data Analytics.
-#' @author \email{jason@@bryer.org}
+#' @title R Package to support DATA606 Statistics and Probability for Data Analytics.
+#' @author \email{jason.bryer@@cuny.edu}
 #' @keywords package shiny
 #' @import shiny
 #' @import openintro
@@ -17,8 +17,8 @@ NULL
 .onAttach <- function(libname, pkgname) {
 	cat("\nWelcome to CUNY DATA606 Statistics and Probability for Data Analytics",
 		"\nThis package is designed to support this course. The text book used",
-		"\nis OpenIntro Statistics, 3rd Edition. You can read this by typing",
-		"\nvignette('os3') or visit www.OpenIntro.org.",
+		"\nis OpenIntro Statistics, 4th Edition. You can read this by typing",
+		"\nvignette('os4') or visit www.OpenIntro.org.",
 		"\n",
 		"\nThe getLabs() function will return a list of the labs available.",
 		"\n",
