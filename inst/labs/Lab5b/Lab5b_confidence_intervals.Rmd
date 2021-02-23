@@ -175,7 +175,7 @@ store_ci <- function(i, n, reps, conf_level, success) {
       x_upper = names(.)[2]
     )
 }
-
+library(shiny)
 shinyApp(
   ui <- fluidPage(
     h4("Confidence intervals for the proportion of US adults who think 
