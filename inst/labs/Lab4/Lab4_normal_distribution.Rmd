@@ -86,7 +86,7 @@ ggplot(data = dairy_queen, aes(x = cal_fat)) +
         stat_function(fun = dnorm, args = c(mean = dqmean, sd = dqsd), col = "tomato")
 ```
 
-After initializing a blank plot with `geom_blank()`, the `ggplot2` package (within the `tidyverse`) allows us to add additional layers. The first layer is a density histogram. The second layer is a statistical function -- the density of the normal curve, `dnorm`. We specify that we want the curve to have the same mean and standard deviation as the column of female heights. The argument `col` simply sets the color for the line to be drawn. If we left it out, the line would be drawn in black.
+After initializing a blank plot with `geom_blank()`, the `ggplot2` package (within the `tidyverse`) allows us to add additional layers. The first layer is a density histogram. The second layer is a statistical function -- the density of the normal curve, `dnorm`. We specify that we want the curve to have the same mean and standard deviation as the column of fat calories. The argument `col` simply sets the color for the line to be drawn. If we left it out, the line would be drawn in black.
 
 2.  Based on the this plot, does it appear that the data follow a nearly normal 
     distribution?
@@ -125,7 +125,7 @@ qqnormsim(sample = cal_fat, data = dairy_queen)
 
 4.  Does the normal probability plot for the calories from fat look similar to the plots 
     created for the simulated data?  That is, do the plots provide evidence that the
-    female heights are nearly normal?
+    calories are nearly normal?
 
 5.  Using the same technique, determine whether or not the calories from McDonald's
     menu appear to come from a normal distribution.
