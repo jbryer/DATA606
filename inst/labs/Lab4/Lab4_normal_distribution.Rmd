@@ -58,7 +58,7 @@ Let's first focus on just products from McDonalds and Dairy Queen.
 
 ```{r}
 mcdonalds <- fastfood %>%
-  filter(restaurant == "McDonalds")
+  filter(restaurant == "Mcdonalds")
 dairy_queen <- fastfood %>%
   filter(restaurant == "Dairy Queen")
 ```
