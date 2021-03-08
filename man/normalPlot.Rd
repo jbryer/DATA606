@@ -16,7 +16,7 @@ normalPlot(mean = 0, sd = 1, bounds = c(-1, 1), tails = FALSE)
 \item{tails}{should the tails be shaded.}
 }
 \description{
-Plots a nomral distribution with the area within the given bounds shaded.
+Plots a normal distribution with the area within the given bounds shaded.
 The probability (i.e. area) under the normal curve for the given bounds
 is also given.
 }
