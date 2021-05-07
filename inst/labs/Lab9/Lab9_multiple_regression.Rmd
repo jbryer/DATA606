@@ -51,7 +51,7 @@ glimpse(evals)
 
 We have observations on 21 different variables, some categorical and some numerical. The meaning of each variable can be found by bringing up the help file:
 
-```{r help-evals}
+```{r help-evals, eval=FALSE}
 ?evals
 ```
 
@@ -164,10 +164,10 @@ As a result, for female professors, the parameter estimate is multiplied by zero
 with the following  -->
 <!-- custom function. -->
 
-<!-- ```{r twoLines} -->
-<!-- ggplot(data = evals, aes(x = bty_avg, y = score, color = pic_color)) + -->
-<!--   geom_smooth(method = "lm", formula = y ~ x, se = FALSE) -->
-<!-- ``` -->
+```{r twoLines}
+ggplot(data = evals, aes(x = bty_avg, y = score, color = pic_color)) +
+ geom_smooth(method = "lm", formula = y ~ x, se = FALSE)
+```
 
 9.  What is the equation of the line corresponding to those with color pictures? 
     (*Hint:* For those with color pictures, the parameter estimate is multiplied

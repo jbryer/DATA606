@@ -77,6 +77,7 @@ Just as you've used the mean and standard deviation to summarize a single variab
 
 ```{r plotss-expression-score, eval=FALSE}
 # This will only work interactively (i.e. will not show in the knitted document)
+hfi <- hfi %>% filter(complete.cases(pf_expression_control, pf_score))
 DATA606::plot_ss(x = hfi$pf_expression_control, y = hfi$pf_score)
 ```
 
@@ -89,7 +90,7 @@ After running this command, you'll be prompted to click two points on the plot t
 The most common way to do linear regression is to select the line that minimizes the sum of squared residuals. To visualize the squared residuals, you can rerun the plot command and add the argument `showSquares = TRUE`.
 
 ```{r plotss-expression-score-squares, eval=FALSE}
-DATA606::plot_ss(x = pf_expression_control, y = pf_score, data = hfi, showSquares = TRUE)
+DATA606::plot_ss(x = hfi$pf_expression_control, y = hfi$pf_score, showSquares = TRUE)
 ```
 
 Note that the output from the `plot_ss` function provides you with the slope and intercept of your line as well as the sum of squares.
