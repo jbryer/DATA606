@@ -11,7 +11,7 @@ License: Creative Commons
 LazyData: TRUE
 Depends: shiny, openintro, ggplot2, markdown
 Suggests:
-    R.rsp, grid, png, scales, BHH2, gridExtra, plotrix, shinythemes, tidyr, dplyr, reshape2, readxl, knitr
+    R.rsp, grid, png, scales, BHH2, gridExtra, plotrix, shinythemes, tidyr, dplyr, reshape2, readxl, knitr, Deriv
 VignetteBuilder: R.rsp
 RoxygenNote: 7.1.1
 Encoding: UTF-8
