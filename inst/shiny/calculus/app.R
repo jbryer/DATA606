@@ -42,9 +42,11 @@ ui <- fluidPage(
         	),
         	conditionalPanel(condition = 'input.calc_type == "Derivatives"',
         		uiOutput('point_input'),
-        		numericInput('interval', label = 'Interval',
-        					 min = 0, max = 5, value = 2, step = 0.1)
-			)
+        		# numericInput('interval', label = 'Interval',
+        		# 			 min = -5, max = 5, value = -1, step = 0.1)
+        		sliderInput('interval', label = 'Interval',
+        					 min = -5, max = 5, value = -1, step = 0.1)
+        	)
         ),
 
         mainPanel(
@@ -135,10 +137,10 @@ server <- function(input, output) {
 
 			# dx <- Deriv(f, "x") # TODO: Why doesn't this work!
 
-			df_segment <- data.frame(x1 = input$point - input$interval,
-									 x2 = input$point + input$interval,
-									 y1 = f(input$point - input$interval),
-									 y2 = f(input$point + input$interval) )
+			df_segment <- data.frame(x1 = input$point + input$interval,
+									 x2 = input$point,
+									 y1 = f(input$point + input$interval),
+									 y2 = f(input$point) )
 
 			segment_slope <- (df_segment$y2 - df_segment$y1) / (df_segment$x2 - df_segment$x1)
 
