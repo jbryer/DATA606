@@ -17,9 +17,11 @@ ui <- fluidPage(
         					   choices = c(
         					   		'Unit Line' = 'unit_line',
         					   		'Grand Mean' = 'grand_mean',
+        					   		# 'Grand Standard Deviation' = 'sd_line',
         					   		'Group Standard Deviation' = 'group_sd',
         					   		'Group Variance' = 'group_variances',
         					   		'Mean Square Within (Error)' = 'ms_within',
+        					   		# 'Pooled Standard Deviation' = 'pooled_sd',
         					   		'Mean Square Between (Treatment)' = 'ms_between'
         					   )),
         	hr(),
@@ -265,6 +267,19 @@ server <- function(input, output, session) {
     			geom_hline(yintercept = mean(df$Value), alpha = 0.5, linetype = 2, size = 1) +
     			geom_vline(xintercept = 0, alpha = 0.5, linetype = 2, size = 1) +
     			geom_point(aes(x = 0, y = grand_mean), color = 'blue', size = 4)
+    	}
+
+    	if('sd_line' %in% input$plot_features) {
+	    	p <- p +
+	    		geom_hline(yintercept = c(grand_mean - sd(df$Value), grand_mean + sd(df$Value)),
+	    				   linetype = 5, color = 'maroon', alpha = 0.5)
+    	}
+
+    	if('pooled_sd' %in% input$plot_features) {
+	    	p <- p +
+	    		geom_hline(yintercept = c(grand_mean + 1 * mean(desc$sd),
+	    								  grand_mean - 1 * mean(desc$sd)),
+	    				   linetype = 5, color = 'maroon', alpha = 0.5)
     	}
 
     	xlim <- c(-1.1 * max(2 * sqrt(MS_between), diff(range(df$Value)) ) / 2,
