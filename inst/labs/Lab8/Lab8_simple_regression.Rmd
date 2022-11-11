@@ -173,7 +173,7 @@ Notice here that `m1` can also serve as a data set because stored within it are 
 
 ```{r hist-res}
 ggplot(data = m1, aes(x = .resid)) +
-  geom_histogram(binwidth = 25) +
+  geom_histogram(bins = 25) +
   xlab("Residuals")
 ```
 
