@@ -2,8 +2,16 @@ library(shiny)
 library(tidyverse)
 library(psych)
 
+color_palette <- c(sd_line = 'maroon', # Grand (overall) Standard Deviation
+				   pooled_sd = 'steelblue3' # Pooled Standard Deviation
+				   )
+
 ui <- fluidPage(
-    titlePanel("Graphical One-Way Analysis of Variance (ANOVA)"),
+	tags$head(tags$style(HTML('.irs-from, .irs-to, .irs-min, .irs-max, .irs-single {
+            visibility: hidden !important;
+    }'))),
+
+	titlePanel("Graphical One-Way Analysis of Variance (ANOVA)"),
 
     sidebarLayout(
         sidebarPanel(
@@ -17,11 +25,11 @@ ui <- fluidPage(
         					   choices = c(
         					   		'Unit Line' = 'unit_line',
         					   		'Grand Mean' = 'grand_mean',
-        					   		# 'Grand Standard Deviation' = 'sd_line',
-        					   		'Group Standard Deviation' = 'group_sd',
-        					   		'Group Variance' = 'group_variances',
+        					   		'Grand (overall) Standard Deviation' = 'sd_line',
+        					   		'Within Group Standard Deviations' = 'group_sd',
+        					   		'Within Group Variances' = 'group_variances',
         					   		'Mean Square Within (Error)' = 'ms_within',
-        					   		# 'Pooled Standard Deviation' = 'pooled_sd',
+        					   		'Pooled Within Group Standard Deviation' = 'pooled_sd',
         					   		'Mean Square Between (Treatment)' = 'ms_between'
         					   )),
         	hr(),
@@ -34,7 +42,8 @@ ui <- fluidPage(
 	        				 'n per group:',
 	        				 min = 2, max = 1000,
 	        				 value = 10, step = 1),
-	        	uiOutput('mean_ui'),
+	        	conditionalPanel('input.dataset == "simulate"',
+	        					 uiOutput('mean_ui')),
 	        	numericInput('sd',
 	        				 'Standard Deviation:',
 	        				 value = 3),
@@ -52,7 +61,6 @@ ui <- fluidPage(
 )
 
 server <- function(input, output, session) {
-
 	getData <- reactive({
 		req(input$dataset)
 		input$resample
@@ -133,11 +141,25 @@ server <- function(input, output, session) {
 				}
 			)
 
-			inputs[[paste0('mean_adjust_', getGroupName(i))]] <- sliderInput(paste0('mean_adjust_', getGroupName(i)),
-															   paste0('Adjust mean for ', i, ' by:'),
-															   value = value,
-															   min = round(-1 * grand_sd * 4),
-															   max = round(grand_sd * 4) )
+			# TODO: Sliders for adding/subtracting values to all values.
+			# https://stackoverflow.com/questions/35251788/hide-values-of-sliderinput-in-shiny
+
+			# The rounding here will cause the values to change and the initial statistics to be wrong
+			# inputs[[paste0('mean_adjust_', getGroupName(i))]] <- sliderInput(paste0('mean_adjust_', getGroupName(i)),
+			# 												   paste0('Change mean for ', i, ' to:'),
+			# 												   value = value,
+			# 												   min = round(-1 * grand_sd * 4),
+			# 												   max = round(grand_sd * 4) )
+			# inputs[[paste0('mean_adjust_', getGroupName(i))]] <- sliderInput(paste0('mean_adjust_', getGroupName(i)),
+			# 																 paste0('Change mean for ', i, ' to:'),
+			# 																 value = value,
+			# 																 hide_min_max = TRUE,
+			# 																 min = (-1 * grand_sd * 4),
+			# 																 max = (grand_sd * 4) )
+
+			inputs[[paste0('mean_adjust_', getGroupName(i))]] <- numericInput(paste0('mean_adjust_', getGroupName(i)),
+																			 paste0('Change mean for ', i, ' to:'),
+																			 value = value)
 		}
 
 		inputs[['adjust_reset']] <- actionButton('adjust_reset', 'Reset Adjustments')
@@ -159,21 +181,26 @@ server <- function(input, output, session) {
     output$plot <- renderPlot({
     	df <- getData()
 
-
     	if(input$dataset != 'simulate') {
     		for(i in unique(df$Group)) {
-    			if(!is.null(input[[paste0('mean_adjust_', getGroupName(i))]])) {
-    				df[df$Group == i,]$Value <- df[df$Group == i,]$Value +
-    					input[[paste0('mean_adjust_', getGroupName(i))]] - mean(df[df$Group == i,]$Value)
-    			}
+    			req(input[[paste0('mean_adjust_', getGroupName(i))]])
+
+    			df[df$Group == i,]$Value <- df[df$Group == i,]$Value +
+					input[[paste0('mean_adjust_', getGroupName(i))]] - mean(df[df$Group == i,]$Value)
     		}
     	}
-
 
     	desc <- describeBy(df$Value, group = df$Group, mat = TRUE, skew = FALSE)
     	names(desc)[2] <- 'Group'
     	desc$Var <- desc$sd^2
-    	desc$contrast <- (desc$mean - mean(desc$mean)) #/ sd(desc$mean)
+
+    	grand_mean <- mean(df$Value) # Weighted mean
+    	grand_sd <- sd(df$Value) # Weighted SD
+    	# grand_mean <- mean(desc$mean) # Unweighted mean
+    	# grand_var <- var(df$Value) # Weighted variance
+    	# grand_var <- mean(desc$Var) # Unweighted variance
+
+    	desc$contrast <- (desc$mean - grand_mean)
 
     	df <- merge(df, desc[,c('Group', 'contrast', 'mean')],
     				by = 'Group', all.x = TRUE)
@@ -181,8 +208,6 @@ server <- function(input, output, session) {
     	k <- length(unique(df$Group))
     	n <- nrow(df)
 
-    	grand_mean <- mean(df$Value)
-    	grand_var <- var(df$Value)
     	pooled_var <- mean(desc$Var)
 
     	ss_total <- sum((df$Value - grand_mean)^2)
@@ -203,16 +228,14 @@ server <- function(input, output, session) {
 
     	df_rect <- data.frame(
     		`Mean Square` = c('Between', 'Within'),
-    		# contrast = NA,
-    		# Value = NA,
-    		xmin = c(-1* sqrt(MS_between),
-    				 -1 *sqrt(MS_within)),
-    		xmax = c(    sqrt(MS_between),
-    					 sqrt(MS_within)),
-    		ymin = c(grand_mean - 1 * sqrt(MS_between),
-    				 grand_mean - 1 * sqrt(MS_within)),
-    		ymax = c(grand_mean +     sqrt(MS_between),
-    				 grand_mean +     sqrt(MS_within)) )
+    		xmin = c(-1 * sqrt(MS_between) / 2,
+    				 -1 * sqrt(MS_within) / 2),
+    		xmax = c(     sqrt(MS_between) / 2,
+    					  sqrt(MS_within) / 2),
+    		ymin = c(grand_mean - 1 * sqrt(MS_between) / 2,
+    				 grand_mean - 1 * sqrt(MS_within) / 2),
+    		ymax = c(grand_mean +     sqrt(MS_between) / 2,
+    				 grand_mean +     sqrt(MS_within) / 2) )
 
     	df_rect_within <- df %>%
     		mutate(square = (Value - mean)^2) %>%
@@ -220,10 +243,10 @@ server <- function(input, output, session) {
     		summarize(contrast = mean(Value) - grand_mean,
     				  mean = mean(Value),
     				  MS = sum(square) / (n() - 1)) %>%
-    		mutate(xmin = contrast - sqrt(MS),
-    			   xmax = contrast + sqrt(MS),
-    			   ymin = mean - sqrt(MS),
-    			   ymax = mean + sqrt(MS))
+    		mutate(xmin = contrast - sqrt(MS) / 2,
+    			   xmax = contrast + sqrt(MS) / 2,
+    			   ymin = mean - sqrt(MS) / 2,
+    			   ymax = mean + sqrt(MS) / 2)
 
     	df_subscript <- paste0(df_between, ', ', df_within)
     	title <- bquote(F[.(df_subscript)] == .(prettyNum(F_stat, digits = 3)) ~ '; p' ~ .(ifelse(p < 0.01, ' < 0.01', paste0(' = ', prettyNum(p, digits = 3)))))
@@ -236,7 +259,7 @@ server <- function(input, output, session) {
     	}
     	if('group_sd' %in% input$plot_features) {
 	    	p <- p + geom_segment(data = desc,
-	    						  aes(x = contrast, xend = contrast, y = mean - sd, yend = mean + sd),
+	    						  aes(x = contrast, xend = contrast, y = mean - sd / 2, yend = mean + sd / 2),
 	    						  alpha = 0.6)
     	}
 
@@ -253,11 +276,6 @@ server <- function(input, output, session) {
     						   alpha = 0.1, fill = '#7fc97f')
     	}
 
-    		# geom_hline(yintercept = c(grand_mean - sd(df$Value), grand_mean + sd(df$Value)),
-    		# 		   linetype = 5, color = 'maroon', alpha = 0.5) +
-    		# geom_hline(yintercept = c(grand_mean - mean(desc$sd), grand_mean + mean(desc$sd)),
-    		# 		   linetype = 2, color = 'darkgreen', alpha = 0.5) +
-
     	if('unit_line' %in% input$plot_features) {
     		p <- p + geom_abline(slope = slope, intercept = intercept, color = 'grey70')
     	}
@@ -271,15 +289,18 @@ server <- function(input, output, session) {
 
     	if('sd_line' %in% input$plot_features) {
 	    	p <- p +
-	    		geom_hline(yintercept = c(grand_mean - sd(df$Value), grand_mean + sd(df$Value)),
-	    				   linetype = 5, color = 'maroon', alpha = 0.5)
+	    		geom_hline(yintercept = c(grand_mean - grand_sd / 2,
+	    								  grand_mean + grand_sd / 2),
+	    				   linetype = 5, color = color_palette['sd_line'], alpha = 0.5)
     	}
 
     	if('pooled_sd' %in% input$plot_features) {
 	    	p <- p +
-	    		geom_hline(yintercept = c(grand_mean + 1 * mean(desc$sd),
-	    								  grand_mean - 1 * mean(desc$sd)),
-	    				   linetype = 5, color = 'maroon', alpha = 0.5)
+	    		geom_hline(yintercept = c(df_rect[2,]$ymin,
+	    				   			      df_rect[2,]$ymax),
+	    				   linetype = 5,
+	    				   color = color_palette['pooled_sd'],
+	    				   alpha = 0.5)
     	}
 
     	xlim <- c(-1.1 * max(2 * sqrt(MS_between), diff(range(df$Value)) ) / 2,
@@ -295,10 +316,13 @@ server <- function(input, output, session) {
     				  angle = 90, hjust = 0, vjust = -0.8) +
     		ggtitle(title) +
     		xlim(xlim) + ylim(ylim) +
-    		xlab('Contrast Coefficient') + ylab('Dependent Variable') + coord_equal() +
-    		theme_minimal() + theme(panel.grid.major = element_line(color = 'grey90', size = 0.3),
-    								panel.grid.minor = element_blank(),
-    								legend.position = 'bottom')
+    		xlab('Contrast Coefficient') +
+    		ylab('Dependent Variable') +
+    		coord_equal() +
+    		theme_minimal() +
+    		theme(panel.grid.major = element_line(color = 'grey90', size = 0.3),
+    			  panel.grid.minor = element_blank(),
+    			  legend.position = 'bottom')
 
     	p
     })

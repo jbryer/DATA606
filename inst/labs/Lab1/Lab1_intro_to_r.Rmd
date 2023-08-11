@@ -79,7 +79,7 @@ We will be using R Markdown to create reproducible lab reports. See the followin
 [**Using R Markdown for Lab Reports in RStudio**](https://youtu.be/o0h-eVABe9M)
 <iframe width="560" height="315" src="https://www.youtube.com/embed/o0h-eVABe9M" frameborder="0" allowfullscreen></iframe>
 
-In a nutshell, in RStudio, go to New File -> R Markdown... Then, choose From Template and then choose `Lab Report for OpenIntro Statistics Lab 1` from the list of templates. **Alternatively, you can just type your answers in this document instead of creating a separate document.**
+This file (with the `.Rmd` file extension) will serve as the lab report. You can just type your answers in this document instead of creating a separate document.
 
 Going forward you should refrain from typing your code directly in the console, and instead type any code (final correct answer, or anything you're just trying out) in the R Markdown file and run the chunk using either the Run button on the chunk  (green sideways triangle) or by highlighting the code and clicking Run on the top  right corner of the R Markdown editor. If at any point you need to start over, you  can Run All Chunks above the chunk you're working in by clicking on the down arrow in the code chunk.
 
@@ -139,9 +139,10 @@ arbuthnot$boys
 
 This command will only show the number of boys baptized each year. The dollar sign basically says "go to the data frame that comes before me, and find the variable that comes after me".
 
-1. What command would you use to extract just the counts of girls baptized? Try
-   it!
-    
+1. What command would you use to extract just the counts of girls baptized? Try it!
+
+**Insert your answer here**
+
 Notice that the way R has printed these data is different. When we looked at the complete data frame, we saw 82 rows, one on each line of the display. These data are no longer structured in a table with other variables, so they are displayed  one right after another. Objects that print out in this way are called *vectors*; they represent a set of numbers. R has added numbers in [brackets] along the left side of the printout to indicate locations within the vector. For example, 5218  follows `[1]`, indicating that `5218` is the first entry in the vector. And if `[43]` starts a line, then that would mean the first number on that line would represent the 43rd entry in the vector.
 
 
@@ -184,6 +185,8 @@ Notice that the help file replaces the plot in the lower right panel. You can to
    How would you describe it? (To ensure that your lab report is comprehensive,
    be sure to include the code needed to make the plot as well as your written
    interpretation.)
+
+**Insert your answer here**
 
 ### R as a big calculator
 
@@ -264,6 +267,8 @@ Note that we are using the new `total` variable we created earlier in our calcul
 
 3. Now, generate a plot of the proportion of boys born over time. What do you see? 
 
+**Insert your answer here**
+
 <div id="boxedtext">
 **Tip: ** If you use the up and down arrow keys, you can scroll through your previous commands, your so-called command history. 
 You can also access it by clicking on the history tab in the upper right panel. 
@@ -299,12 +304,18 @@ arbuthnot %>%
 1.  What years are included in this data set? What are the dimensions of the 
     data frame? What are the variable (column) names?
 
+**Insert your answer here**
+
 1.  How do these counts compare to Arbuthnot's? Are they of a similar magnitude?
+
+**Insert your answer here**
 
 1.  Make a plot that displays the proportion of boys born over time. What do you see? 
     Does Arbuthnot's observation about boys being born in greater proportion than girls 
     hold up in the U.S.? Include the plot in your response. *Hint:* You should be
     able to reuse your code from Exercise 3 above, just replace the dataframe name.
+
+**Insert your answer here**
 
 1.  In what year did we see the most total number of births in the U.S.? *Hint:*
     First calculate the totals and save it as a new variable. Then, sort your
@@ -314,11 +325,13 @@ arbuthnot %>%
     to use two new functions: `arrange` (for sorting). We can arrange the data 
     in a descending order with another function: `desc` (for descending order).
     The sample code is provided below.
-    
+
 ```{r sample-arrange, eval=FALSE}
 present %>%
   arrange(desc(total))
 ```
+
+**Insert your answer here**
 
 These data come from reports by the Centers for Disease Control. 
 You can learn more about them by bringing up the help file using the command `?present`.

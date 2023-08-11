@@ -44,6 +44,8 @@ The data we're working with is in the openintro package and it's called `hfi`, s
 
 1.  What are the dimensions of the dataset?
 
+**Insert your answer here**
+
 2.  What type of plot would you use to display the relationship between the personal
     freedom score, `pf_score`, and one of the other numerical variables? Plot 
     this relationship using the variable `pf_expression_control` as the predictor.
@@ -51,6 +53,8 @@ The data we're working with is in the openintro package and it's called `hfi`, s
     or its score out of 10, with 0 being the most, of political pressures and 
     controls on media content, would you be comfortable using a linear model to
     predict the personal freedom score?
+
+**Insert your answer here**
 
 If the relationship looks linear, we can quantify the strength of the relationship with the correlation coefficient.
 
@@ -72,6 +76,8 @@ Think back to the way that we described the distribution of a single variable. R
 3.  Looking at your plot from the previous exercise, describe the relationship 
     between these two variables. Make sure to discuss the form, direction, and 
     strength of the relationship as well as any unusual observations.
+
+**Insert your answer here**
 
 Just as you've used the mean and standard deviation to summarize a single variable, you can summarize the relationship between these two variables by finding the line that best follows their association. Use the following interactive function to select the line that you think does the best job of going through the cloud of points.
 
@@ -98,6 +104,8 @@ Note that the output from the `plot_ss` function provides you with the slope and
 4.  Using `plot_ss`, choose a line that does a good job of minimizing the sum of
     squares. Run the function several times. What was the smallest sum of 
     squares that you got? How does it compare to your neighbors?
+
+**Insert your answer here**
 
 ## The linear model
 
@@ -129,6 +137,8 @@ One last piece of information we will discuss from the summary output is the Mul
     context of the relationship between human freedom and the amount of political
     pressure on media content?
 
+**Insert your answer here**
+
 ## Prediction and prediction errors
 
 Let's create a scatterplot with the least squares line for `m1` laid on top.
@@ -147,6 +157,8 @@ This line can be used to predict $y$ at any value of $x$. When predictions are m
     would they predict a country's personal freedom school for one with a 6.7 rating
     for `pf_expression_control`? Is this an overestimate or an underestimate, and
     by how much? In other words, what is the residual for this prediction?
+
+**Insert your answer here**
 
 ## Model diagnostics
 
@@ -167,7 +179,7 @@ Notice here that `m1` can also serve as a data set because stored within it are 
 7.  Is there any apparent pattern in the residuals plot? What does this indicate
     about the linearity of the relationship between the two variables?  
 
-</br>
+**Insert your answer here**
 
 **Nearly normal residuals**: To check this condition, we can look at a histogram
 
@@ -189,29 +201,35 @@ Note that the syntax for making a normal probability plot is a bit different tha
 8.  Based on the histogram and the normal probability plot, does the nearly 
     normal residuals condition appear to be met?
 
-</br>
+**Insert your answer here**
 
 **Constant variability**:
 
 9.  Based on the residuals vs. fitted plot, does the constant variability condition 
     appear to be met?
 
+**Insert your answer here**
+
 * * *
 
 ## More Practice
-<div class="oyo">
 
 -   Choose another freedom variable and a variable you think would strongly
     correlate with it.. Produce a scatterplot of the two variables and fit a 
     linear model. At a glance, does there seem to be a linear relationship?
+
+**Insert your answer here**
 
 -   How does this relationship compare to the relationship between 
     `pf_expression_control` and `pf_score`? Use the $R^2$ values from the two 
     model summaries to compare. Does your independent variable seem to predict
     your dependent one better? Why or why not?
 
+**Insert your answer here**
 
 -   What's one freedom relationship you were most surprised about and why? Display
     the model diagnostics for the regression model analyzing this relationship.
     
+**Insert your answer here**
+
 * * *

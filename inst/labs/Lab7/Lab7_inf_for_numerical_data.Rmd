@@ -53,6 +53,8 @@ There are observations on 13 different variables, some categorical and some nume
 
 1.  What are the cases in this data set? How many cases are there in our sample?
 
+**Insert your answer here**
+
 Remember that you can answer this question by viewing the data in the data viewer or by using the following command:
 
 ```{r str}
@@ -71,6 +73,8 @@ summary(yrbss$weight)
 
 2.  How many observations are we missing weights from?
 
+**Insert your answer here**
+
 Next, consider the possible relationship between a high schooler's weight and their physical activity. Plotting the data is a useful first step because it helps us quickly visualize trends, identify strong associations, and develop research questions.
 
 First, let's create a new variable `physical_3plus`, which will be coded as either "yes" if they are physically active for at least 3 days a week, and "no" if not.
@@ -83,6 +87,7 @@ yrbss <- yrbss %>%
 
 3.  Make a side-by-side boxplot of `physical_3plus` and `weight`. Is there a relationship between these two variables? What did you expect and why?
 
+**Insert your answer here**
 
 The box plots show how the medians of the two distributions compare, but we can also compare the means of the distributions using the following to first group the data by the `physical_3plus` variable, and then calculate the mean `weight` in these groups using the `mean` function while ignoring missing values by setting the `na.rm` argument to `TRUE`.
 
@@ -98,7 +103,11 @@ There is an observed difference, but is this difference statistically significan
 
 4.  Are all conditions necessary for inference satisfied? Comment on each. You can compute the group sizes with the `summarize` command above by defining a new variable with the definition `n()`.
 
+**Insert your answer here**
+
 5.  Write the hypotheses for testing if the average weights are different for those who exercise at least times a week and those who don't.
+
+**Insert your answer here**
 
 Next, we will introduce a new function, `hypothesize`, that falls into the `infer` workflow. You will use this method for conducting hypothesis tests. 
 
@@ -106,6 +115,7 @@ But first, we need to initialize the test, which we will save as `obs_diff`.
 
 ```{r inf-weight-habit-ht-initial, tidy=FALSE, warning = FALSE}
 obs_diff <- yrbss %>%
+  drop_na(physical_3plus) %>%
   specify(weight ~ physical_3plus) %>%
   calculate(stat = "diff in means", order = c("yes", "no"))
 ```
@@ -116,6 +126,7 @@ After you have initialized the test, you need to simulate the test on the null d
 
 ```{r inf-weight-habit-ht-null, tidy=FALSE, warning = FALSE}
 null_dist <- yrbss %>%
+  drop_na(physical_3plus) %>%
   specify(weight ~ physical_3plus) %>%
   hypothesize(null = "independence") %>%
   generate(reps = 1000, type = "permute") %>%
@@ -136,6 +147,8 @@ ggplot(data = null_dist, aes(x = stat)) +
 
 6. How many of these `null` permutations have a difference of at least `obs_stat`?
 
+**Insert your answer here**
+
 Now that the test is initialized and the null distribution formed, you can calculate the p-value for your hypothesis test using the function `get_p_value`.
 
 ```{r inf-weight-habit-ht-pvalue}
@@ -153,12 +166,22 @@ This the standard workflow for performing hypothesis tests.
 
 8.  Calculate a 95% confidence interval for the average height in meters (`height`) and interpret it in context.
 
+**Insert your answer here**
+
 9.  Calculate a new confidence interval for the same parameter at the 90% confidence level. Comment on the width of this interval versus the one obtained in the previous exercise.
+
+**Insert your answer here**
 
 10.  Conduct a hypothesis test evaluating whether the average height is different for those who exercise at least three times a week and those who don't.
 
+**Insert your answer here**
+
 11.  Now, a non-inference task: Determine the number of different options there are in the dataset for the `hours_tv_per_school_day` there are.
 
+**Insert your answer here**
+
 12. Come up with a research question evaluating the relationship between height or weight and sleep. Formulate the question in a way that it can be answered using a hypothesis test and/or a confidence interval. Report the statistical results, and also provide an explanation in plain language. Be sure to check all assumptions, state your $\alpha$ level, and conclude in context.
+
+**Insert your answer here**
 
 * * *

@@ -42,7 +42,11 @@ You will be analyzing the same dataset as in the previous lab, where you delved 
 
 1.   What are the counts within each category for the amount of days these students have texted while driving within the past 30 days?
 
+**Insert your answer here**
+
 2.  What is the proportion of people who have texted while driving every day in the past 30 days and never wear helmets?
+
+**Insert your answer here**
 
 Remember that you can use `filter` to limit the dataset to just non-helmet wearers. Here, we will name the dataset `no_helmet`.
 
@@ -80,11 +84,15 @@ Note that since the goal is to construct an interval estimate for a proportion, 
     wearers that have texted while driving each day for the past 30 days based on 
     this survey?
 
+**Insert your answer here**
+
 4.  Using the `infer` package, calculate confidence intervals for two other 
     categorical variables (you'll need to decide which level to call "success", 
     and report the associated margins of error. Interpet the interval in context 
     of the data. It may be helpful to create new data sets for each of the two 
     countries first, and then use these data sets to construct the confidence intervals.
+
+**Insert your answer here**
 
 ## How does the proportion affect the margin of error?
 
@@ -122,6 +130,8 @@ ggplot(data = dd, aes(x = p, y = me)) +
 5.  Describe the relationship between `p` and `me`. Include the margin of
     error vs. population proportion plot you constructed in your answer. For
     a given sample size, for which value of `p` is margin of error maximized?
+
+**Insert your answer here**
 
 ## Success-failure condition
 
@@ -168,11 +178,17 @@ shinyApp(
 6.  Describe the sampling distribution of sample proportions at $n = 300$ and 
     $p = 0.1$. Be sure to note the center, spread, and shape.
 
+**Insert your answer here**
+
 7.  Keep $n$ constant and change $p$. How does the shape, center, and spread 
     of the sampling distribution vary as $p$ changes. You might want to adjust
     min and max for the $x$-axis for a better view of the distribution.
-    
+
+**Insert your answer here**
+
 8.  Now also change $n$. How does $n$ appear to affect the distribution of $\hat{p}$?
+
+**Insert your answer here**
 
 * * *
 
@@ -186,10 +202,14 @@ For some of the exercises below, you will conduct inference comparing two propor
     for inference. If you find a significant difference, also quantify this 
     difference with a confidence interval. 
 
+**Insert your answer here**
+
 10.  Let's say there has been no difference in likeliness to strength train every
     day of the week for those who sleep 10+ hours. What is the probablity that
     you could detect a change (at a significance level of 0.05) simply by chance?
     *Hint:* Review the definition of the Type 1 error.
+
+**Insert your answer here**
 
 11.  Suppose you're hired by the local government to estimate the proportion of 
     residents that attend a religious service on a weekly basis. According to 
@@ -199,5 +219,7 @@ For some of the exercises below, you will conduct inference comparing two propor
     guidelines?\
     *Hint:* Refer to your plot of the relationship between $p$ and margin of 
     error. This question does not require using a dataset.
+
+**Insert your answer here**
 
 * * *

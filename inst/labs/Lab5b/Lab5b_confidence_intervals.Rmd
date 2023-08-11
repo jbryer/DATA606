@@ -92,8 +92,12 @@ samp <- us_adults %>%
     the proportion of those **in this sample** who think climate change affects their 
     local community.
 
+**Insert your answer here**
+
 1.  Would you expect another student's sample proportion to be identical to yours? 
     Would you expect it to be similar? Why or why not?
+
+**Insert your answer here**
 
 ## Confidence intervals
 
@@ -143,15 +147,21 @@ To recap: even though we don't know what the full population looks like, we're 9
 
 1.  In the interpretation above, we used the phrase "95% confident". What does "95% confidence" mean?
 
+**Insert your answer here**
+
 In this case, you have the rare luxury of knowing the true population proportion (62%) since you have data on the entire population. 
 
 1.  Does your confidence interval capture the true population proportion of US adults 
     who think climate change affects their local community? If you are working on this 
     lab in a classroom, does your neighbor's interval capture this value? 
 
+**Insert your answer here**
+
 1.  Each student should have gotten a slightly different confidence interval. What 
     proportion of those intervals would you expect to capture the true population 
     mean? Why?
+
+**Insert your answer here**
 
 In the next part of the lab, you will collect many samples to learn more about how sample proportions and confidence intervals constructed based on those samples vary from one sample to another.
 
@@ -278,6 +288,8 @@ shinyApp(
     Is this proportion exactly equal to the confidence level? If not, explain why. 
     Make sure to include your plot in your answer.
 
+**Insert your answer here**
+
 * * *
 
 ## More Practice
@@ -286,10 +298,14 @@ shinyApp(
     interval at this level to me wider or narrower than the confidence interval 
     you calculated at the 95% confidence level? Explain your reasoning.
 
+**Insert your answer here**
+
 1.  Using code from the **infer** package and data fromt the one sample you have 
     (`samp`), find a confidence interval for the proportion 
     of US Adults who think climate change is affecting their local community with a 
     confidence level of your choosing (other than 95%) and interpret it.
+
+**Insert your answer here**
 
 1.  Using the app, calculate 50 confidence intervals at the confidence level you chose 
     in the previous question, and plot all intervals on one plot, and calculate 
@@ -297,6 +313,8 @@ shinyApp(
     How does this percentage compare to the confidence level selected for the 
     intervals?
     
+**Insert your answer here**
+
 1.  Lastly, try one more (different) confidence level. First, state how you expect the
     width of this interval to compare to previous ones you calculated. Then, 
     calculate the bounds of the interval using the **infer** package and data 
@@ -304,11 +322,17 @@ shinyApp(
     and calculate the proportion of intervals that are capture the true population 
     proportion.
 
+**Insert your answer here**
+
 1.  Using the app, experiment with different sample sizes and comment on how the 
     widths of intervals change as sample size changes (increases and decreases).
     
+**Insert your answer here**
+
 1.  Finally, given a sample size (say, 60), how does the width of the interval change 
     as you increase the number of bootstrap samples. **Hint:** Does changing the 
     number of bootstap samples affect the standard error?
+
+**Insert your answer here**
 
 * * *

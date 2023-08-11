@@ -62,12 +62,18 @@ We have observations on 21 different variables, some categorical and some numeri
     differences in course evaluations. Given the study design, is it possible to
     answer this question as it is phrased? If not, rephrase the question.
 
+**Insert your answer here**
+
 2.  Describe the distribution of `score`. Is the distribution skewed? What does 
     that tell you about how students rate courses? Is this what you expected to 
     see? Why, or why not?
 
+**Insert your answer here**
+
 3.  Excluding `score`, select two other variables and describe their relationship 
     with each other using an appropriate visualization.
+
+**Insert your answer here**
 
 ## Simple linear regression
 
@@ -88,12 +94,16 @@ ggplot(data = evals, aes(x = bty_avg, y = score)) +
   geom_jitter()
 ```
 
+**Insert your answer here**
+
 5.  Let's see if the apparent trend in the plot is something more than
     natural variation. Fit a linear model called `m_bty` to predict average
     professor score by average beauty rating. Write out the equation for the linear 
     model and interpret the slope. Is average beauty score a statistically significant
     predictor? Does it appear to be a practically significant predictor?
     
+**Insert your answer here**
+
 Add the line of the bet fit model to your plot using the following:
     
 ```{r scatter-score-bty_avg-line-se}
@@ -113,6 +123,8 @@ ggplot(data = evals, aes(x = bty_avg, y = score)) +
 6.  Use residual plots to evaluate whether the conditions of least squares
     regression are reasonable. Provide plots and comments for each one (see
     the Simple Regression Lab for a reminder of how to make these).
+
+**Insert your answer here**
 
 ## Multiple linear regression
 
@@ -147,8 +159,12 @@ summary(m_bty_gen)
     conditions for the regression are reasonable. Verify that the conditions
     for this model are reasonable using diagnostic plots.
 
+**Insert your answer here**
+
 8.  Is `bty_avg` still a significant predictor of `score`? Has the addition
     of `gender` to the model changed the parameter estimate for `bty_avg`?
+
+**Insert your answer here**
 
 Note that the estimate for `gender` is now called `gendermale`. You'll see this name change whenever you introduce a categorical variable. The reason is that R recodes `gender` from having the values of `male` and `female` to being an indicator variable called `gendermale` that takes a value of $0$ for female professors and a value of $1$ for male professors. (Such variables are often referred to as "dummy" variables.)
 
@@ -174,12 +190,16 @@ ggplot(data = evals, aes(x = bty_avg, y = score, color = pic_color)) +
     by 1.) For two professors who received the same beauty rating, which color 
     picture tends to have the higher course evaluation score?
 
+**Insert your answer here**
+
 The decision to call the indicator variable `gendermale` instead of `genderfemale` has no deeper meaning. R simply codes the category that comes first alphabetically as a $0$. (You can change the reference level of a categorical variable, which is the level that is coded as a 0, using the`relevel()` function. Use `?relevel` to learn more.)
 
 10. Create a new model called `m_bty_rank` with `gender` removed and `rank` 
     added in. How does R appear to handle categorical variables that have more 
     than two levels? Note that the rank variable has three levels: `teaching`, 
     `tenure track`, `tenured`.
+
+**Insert your answer here**
 
 The interpretation of the coefficients in multiple regression is slightly different from that of simple regression. The estimate for `bty_avg` reflects how much higher a group of professors is expected to score if they have a beauty rating that is one point higher *while holding all other variables constant*. In this case, that translates into considering only professors of the same rank with `bty_avg` scores that are one point apart.
 
@@ -190,6 +210,8 @@ We will start with a full model that predicts professor score based on rank, gen
 11. Which variable would you expect to have the highest p-value in this model? 
     Why? *Hint:* Think about which variable would you expect to not have any 
     association with the professor score.
+
+**Insert your answer here**
 
 Let's run the model...
 
@@ -203,7 +225,11 @@ summary(m_full)
 12. Check your suspicions from the previous exercise. Include the model output
     in your response.
 
+**Insert your answer here**
+
 13. Interpret the coefficient associated with the ethnicity variable.
+
+**Insert your answer here**
 
 14. Drop the variable with the highest p-value and re-fit the model. Did the
     coefficients and significance of the other explanatory variables change?
@@ -212,13 +238,19 @@ summary(m_full)
     the model.) If not, what does this say about whether or not the dropped
     variable was collinear with the other explanatory variables?
 
+**Insert your answer here**
+
 15. Using backward-selection and p-value as the selection criterion,
     determine the best model. You do not need to show all steps in your
     answer, just the output for the final model. Also, write out the linear
     model for predicting score based on the final model you settle on.
 
+**Insert your answer here**
+
 16. Verify that the conditions for this model are reasonable using diagnostic 
     plots.
+
+**Insert your answer here**
 
 17. The original paper describes how these data were gathered by taking a
     sample of professors from the University of Texas at Austin and including 
@@ -226,11 +258,18 @@ summary(m_full)
     course, could this new information have an impact on any of the conditions 
     of linear regression?
 
+**Insert your answer here**
+
 18. Based on your final model, describe the characteristics of a professor and 
     course at University of Texas at Austin that would be associated with a high
     evaluation score.
 
+**Insert your answer here**
+
 19. Would you be comfortable generalizing your conclusions to apply to professors
     generally (at any university)? Why or why not?
+
+**Insert your answer here**
+
 
 * * *
