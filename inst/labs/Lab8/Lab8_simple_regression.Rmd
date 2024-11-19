@@ -129,7 +129,7 @@ Let's consider this output piece by piece. First, the formula used to describe t
   \hat{y} = 4.61707 + 0.49143 \times pf\_expression\_control
 \]
 
-One last piece of information we will discuss from the summary output is the Multiple R-squared, or more simply, $R^2$. The $R^2$ value represents the proportion of variability in the response variable that is explained by the explanatory variable. For this model, 63.42% of the variability in runs is explained by at-bats.
+One last piece of information we will discuss from the summary output is the Multiple R-squared, or more simply, $R^2$. The $R^2$ value represents the proportion of variability in the response variable that is explained by the explanatory variable. For this model, 63.42% of the variability in `pf_free` is explained by `pf_expression_control`. 
 
 5.  Fit a new model that uses `pf_expression_control` to predict `hf_score`, or
     the total human freedom score. Using the estimates from the R output, write 
@@ -185,7 +185,7 @@ Notice here that `m1` can also serve as a data set because stored within it are 
 
 ```{r hist-res}
 ggplot(data = m1, aes(x = .resid)) +
-  geom_histogram(binwidth = 25) +
+  geom_histogram(bins = 25) +
   xlab("Residuals")
 ```
 
