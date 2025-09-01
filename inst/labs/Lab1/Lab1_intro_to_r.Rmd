@@ -30,7 +30,7 @@ As the labs progress, you are encouraged to explore beyond what the labs dictate
 
 Go ahead and launch RStudio. You should see a window that looks like the image shown below.
 
-```{r r-interface-2020, echo=FALSE, results="asis"}
+```{r r-interface-2020, echo=FALSE, results="asis", out.width='100%'}
 knitr::include_graphics("img/r-interface-2020.png")
 ```
 
